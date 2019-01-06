@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using MartinParkerAngularCV.Utilities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,6 +13,13 @@ namespace MartinParkerAngularCV.Controllers
     [ApiController]
     public class TranslationsController : ControllerBase
     {
+        private KeyVaultHelper KeyVaultHelper { get; }
+
+        public TranslationsController(KeyVaultHelper keyVaultHelper)
+        {
+            KeyVaultHelper = keyVaultHelper;
+        }
+
         private string TransformToSafeLocale(string locale)
         {
             locale = locale.ToLowerInvariant();
@@ -27,12 +35,14 @@ namespace MartinParkerAngularCV.Controllers
         }
 
 
-        [HttpGet("Core")]
-        public IActionResult GetCoreTranslations(string locale)
+        [HttpGet("Core/{locale}")]
+        public async Task<IActionResult> GetCoreTranslations(string locale)
         {
             locale = TransformToSafeLocale(locale);
 
-            return Ok(new { resolvedLocale = locale });
+            string testKey = await KeyVaultHelper.GetSecret("martinparkercvstoreConnectionString/c9c196809fe04584a65159ed0fc14d8d");
+
+            return Ok(new { resolvedLocale = locale, testKey });
         }
     }
 }
