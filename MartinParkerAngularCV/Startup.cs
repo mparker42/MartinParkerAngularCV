@@ -1,4 +1,4 @@
-using MartinParkerAngularCV.Configuration;
+using MartinParkerAngularCV.Models.Configuration;
 using MartinParkerAngularCV.Utilities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -19,14 +19,26 @@ namespace MartinParkerAngularCV
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);
 
             services.Configure<KeyVaultConfiguration>(Configuration.GetSection("KeyVault"));
+            services.Configure<BlobStoreConfiguration>(Configuration.GetSection("BlobStore"));
 
-            services.AddSingleton<KeyVaultHelper>();
+            services.AddMemoryCache();
+
+            services.AddSingleton<KeyVaultHelper>()
+                .AddSingleton<BlobStoreHelper>();
+
+            ServiceProvider provider = services.BuildServiceProvider();
+            KeyVaultHelper keyVaultHelper = provider.GetService<KeyVaultHelper>();
+
+            services.AddDistributedRedisCache(options =>
+            {
+                options.Configuration = keyVaultHelper.GetSecret(Configuration.GetValue<string>("RedisSecretURL")).Result;
+                options.InstanceName = "Core";
+            });
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -35,7 +47,6 @@ namespace MartinParkerAngularCV
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -61,9 +72,6 @@ namespace MartinParkerAngularCV
 
             app.UseSpa(spa =>
             {
-                // To learn more about options for serving an Angular SPA from ASP.NET Core,
-                // see https://go.microsoft.com/fwlink/?linkid=864501
-
                 spa.Options.SourcePath = "ClientApp";
 
                 if (env.IsDevelopment())
