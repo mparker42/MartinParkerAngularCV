@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MartinParkerAngularCV.Models.Configuration
+namespace MartinParkerAngularCV.SharedUtilities.Models.Configuration
 {
     public class BlobStoreConfiguration
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using MartinParkerAngularCV.Utilities;
+using MartinParkerAngularCV.SharedUtilities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
@@ -45,7 +45,7 @@ namespace MartinParkerAngularCV.Controllers
 
         private async Task<object> AddTranslationsPackageIntoCache(string packageName)
         {
-            var translations = BlobStoreHelper.GetBlobAsString(_blobPrefix + packageName);
+            Task<string> translations = BlobStoreHelper.GetBlobAsString(_blobPrefix + packageName);
 
             DistributedCache.Set(_cachePrefix + packageName, Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(translations)));
 
@@ -54,7 +54,7 @@ namespace MartinParkerAngularCV.Controllers
 
         private async Task<object> GetTranslationPackage(string packageName)
         {
-            var cachedPackageBytes = await DistributedCache.GetAsync(_cachePrefix + packageName);
+            byte[] cachedPackageBytes = await DistributedCache.GetAsync(_cachePrefix + packageName);
 
             if (cachedPackageBytes != null)
                 return JsonConvert.DeserializeObject(Encoding.UTF8.GetString(cachedPackageBytes));

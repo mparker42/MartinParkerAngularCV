@@ -1,5 +1,5 @@
-using MartinParkerAngularCV.Models.Configuration;
-using MartinParkerAngularCV.Utilities;
+using MartinParkerAngularCV.SharedUtilities.Models.Configuration;
+using MartinParkerAngularCV.SharedUtilities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;

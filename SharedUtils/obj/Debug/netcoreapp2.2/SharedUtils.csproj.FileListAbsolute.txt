@@ -1,0 +1,9 @@
+C:\Users\funny\Desktop\CV\SharedUtils\bin\Debug\netcoreapp2.2\MartinParkerAngularCV.SharedUtils.deps.json
+C:\Users\funny\Desktop\CV\SharedUtils\bin\Debug\netcoreapp2.2\MartinParkerAngularCV.SharedUtils.dll
+C:\Users\funny\Desktop\CV\SharedUtils\bin\Debug\netcoreapp2.2\MartinParkerAngularCV.SharedUtils.pdb
+C:\Users\funny\Desktop\CV\SharedUtils\obj\Debug\netcoreapp2.2\SharedUtils.csprojAssemblyReference.cache
+C:\Users\funny\Desktop\CV\SharedUtils\obj\Debug\netcoreapp2.2\SharedUtils.csproj.CoreCompileInputs.cache
+C:\Users\funny\Desktop\CV\SharedUtils\obj\Debug\netcoreapp2.2\SharedUtils.AssemblyInfoInputs.cache
+C:\Users\funny\Desktop\CV\SharedUtils\obj\Debug\netcoreapp2.2\SharedUtils.AssemblyInfo.cs
+C:\Users\funny\Desktop\CV\SharedUtils\obj\Debug\netcoreapp2.2\MartinParkerAngularCV.SharedUtils.dll
+C:\Users\funny\Desktop\CV\SharedUtils\obj\Debug\netcoreapp2.2\MartinParkerAngularCV.SharedUtils.pdb

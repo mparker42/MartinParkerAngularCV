@@ -4,12 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Azure.KeyVault;
-using MartinParkerAngularCV.Models.Configuration;
+using MartinParkerAngularCV.SharedUtilities.Models.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.Azure.KeyVault.Models;
 using Microsoft.Extensions.Caching.Memory;
 
-namespace MartinParkerAngularCV.Utilities
+namespace MartinParkerAngularCV.SharedUtilities
 {
     public class KeyVaultHelper
     {
@@ -34,7 +34,7 @@ namespace MartinParkerAngularCV.Utilities
             if (_memoryCache.TryGetValue(paramsKey, out string cachedToken))
                 return cachedToken;
 
-            var authContext = new AuthenticationContext(authority);
+            AuthenticationContext authContext = new AuthenticationContext(authority);
             ClientCredential clientCred = new ClientCredential(Environment.GetEnvironmentVariable("KeyVaultClientID"),
                         Environment.GetEnvironmentVariable("KeyVaultClientSecret"));
             AuthenticationResult result = await authContext.AcquireTokenAsync(resource, clientCred);

@@ -1,0 +1,11 @@
+C:\Users\funny\Desktop\CV\TranslationsUpload\bin\Debug\netcoreapp2.2\MartinParkerAngularCV.TranslationsUpload.deps.json
+C:\Users\funny\Desktop\CV\TranslationsUpload\bin\Debug\netcoreapp2.2\MartinParkerAngularCV.TranslationsUpload.runtimeconfig.json
+C:\Users\funny\Desktop\CV\TranslationsUpload\bin\Debug\netcoreapp2.2\MartinParkerAngularCV.TranslationsUpload.runtimeconfig.dev.json
+C:\Users\funny\Desktop\CV\TranslationsUpload\bin\Debug\netcoreapp2.2\MartinParkerAngularCV.TranslationsUpload.dll
+C:\Users\funny\Desktop\CV\TranslationsUpload\bin\Debug\netcoreapp2.2\MartinParkerAngularCV.TranslationsUpload.pdb
+C:\Users\funny\Desktop\CV\TranslationsUpload\obj\Debug\netcoreapp2.2\TranslationsUpload.csprojAssemblyReference.cache
+C:\Users\funny\Desktop\CV\TranslationsUpload\obj\Debug\netcoreapp2.2\TranslationsUpload.csproj.CoreCompileInputs.cache
+C:\Users\funny\Desktop\CV\TranslationsUpload\obj\Debug\netcoreapp2.2\TranslationsUpload.AssemblyInfoInputs.cache
+C:\Users\funny\Desktop\CV\TranslationsUpload\obj\Debug\netcoreapp2.2\TranslationsUpload.AssemblyInfo.cs
+C:\Users\funny\Desktop\CV\TranslationsUpload\obj\Debug\netcoreapp2.2\MartinParkerAngularCV.TranslationsUpload.dll
+C:\Users\funny\Desktop\CV\TranslationsUpload\obj\Debug\netcoreapp2.2\MartinParkerAngularCV.TranslationsUpload.pdb
