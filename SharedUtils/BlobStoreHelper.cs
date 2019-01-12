@@ -37,7 +37,7 @@ namespace MartinParkerAngularCV.SharedUtilities
 
             CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-            _cachedCoreContainer = blobClient.GetContainerReference("Core");
+            _cachedCoreContainer = blobClient.GetContainerReference("core");
             _cachedCoreContainerExpiry = DateTimeOffset.Now.AddHours(1);
 
             return _cachedCoreContainer;
@@ -62,8 +62,8 @@ namespace MartinParkerAngularCV.SharedUtilities
 
             foreach (string file in files)
                 coreContainer
-                    .GetBlockBlobReference(file.Substring(substringStart))
-                    .UploadFromFile(path);
+                    .GetBlockBlobReference(file.Substring(substringStart).TrimStart('\\').Replace('\\', '/'))
+                    .UploadFromFile(file);
         }
     }
 }

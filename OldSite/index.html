@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Martin Parker Portfolio</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="apple-touch-startup-image" href="content/img/branding/portfoliobannerlandscape.png" media="(orientation:landscape)" />
+    <link rel="apple-touch-startup-image" href="content/img/branding/portfoliobannerportrait.png" media="(orientation:portrait)" />
+    <link rel="apple-touch-icon" href="content/img/branding/portfoliostufflogo.png" />
+
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono&subset=latin,latin-ext,greek,greek-ext,vietnamese,cyrillic-ext,cyrillic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/ie10mobile.css" />
+    <link rel="stylesheet" href="lib/durandal/css/durandal.css" />
+    <link rel="stylesheet" href="css/portfoliomain.css" />
+
+    <script type="text/javascript">
+            if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+                var msViewportStyle = document.createElement("style");
+                var mq = "@@-ms-viewport{width:auto!important}";
+                msViewportStyle.appendChild(document.createTextNode(mq));
+                document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+            }
+    </script>
+</head>
+<body>
+    <div id="applicationHost">
+        <div class="splash" style="background-color:rgba(0,0,0,0.6)">
+            <div class="message" style="padding-top:50px;">
+                <img src="content/img/branding/portfoliostufflogo.png" class="loadingLogo"/>
+            </div>
+            <i class="fa fa-spinner fa-spin" style="margin-bottom:50px;"></i>
+        </div>
+    </div>
+
+    <script src="lib/jquery/jquery-1.9.1.js" data-main="app/main"></script>
+    <script src="lib/json2/json2.js" data-main="app/main"></script>
+    <script src="lib/jstorage/jstorage.js" data-main="app/main"></script>
+    <script src="lib/require/require.js" data-main="app/main"></script>
+</body>
+</html>

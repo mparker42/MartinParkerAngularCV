@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -19,8 +20,8 @@ namespace MartinParkerAngularCV.Controllers
         private KeyVaultHelper KeyVaultHelper { get; }
         private BlobStoreHelper BlobStoreHelper { get; }
         private IDistributedCache DistributedCache { get; }
-        private readonly string _cachePrefix = "Translations_";
-        private readonly string _blobPrefix = "Translations/";
+        private readonly string _cachePrefix = "Translations_",
+            _blobPrefix = "Translations/";
 
         public TranslationsController(KeyVaultHelper keyVaultHelper, IDistributedCache distributedCache, BlobStoreHelper blobStoreHelper)
         {
@@ -31,21 +32,21 @@ namespace MartinParkerAngularCV.Controllers
 
         private string TransformToSafeLocale(string locale)
         {
-            locale = locale.ToLowerInvariant();
+            try
+            {
+                var culture = new CultureInfo(locale);
 
-            // Concat five letter locales e.g. en-GB to their two letter counterparts there is no need for this site to support regional dialects.
-            if (Regex.Match(locale, "[A-z]{2}-[A-z]{2}").Success)
-                locale = locale.Substring(0, 2);
-            // I will only support locales in two formats five letter (e.g. en-GB) and two letter locales (e.g. fr)
-            else if (!Regex.Match(locale, "[A-z]{2}").Success)
-                locale = "en";
-
-            return locale;
+                return culture.TwoLetterISOLanguageName == "" ? "en" : culture.TwoLetterISOLanguageName;
+            }
+            catch (Exception)
+            {
+                return "en";
+            }
         }
 
         private async Task<object> AddTranslationsPackageIntoCache(string packageName)
         {
-            Task<string> translations = BlobStoreHelper.GetBlobAsString(_blobPrefix + packageName);
+            string translations = await BlobStoreHelper.GetBlobAsString(_blobPrefix + packageName);
 
             DistributedCache.Set(_cachePrefix + packageName, Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(translations)));
 
@@ -67,7 +68,7 @@ namespace MartinParkerAngularCV.Controllers
         {
             locale = TransformToSafeLocale(locale);
 
-            return Ok(new { resolvedLocale = locale, translations = GetTranslationPackage($"Core/{locale}.json") });
+            return Ok(new { resolvedLocale = locale, translations = await GetTranslationPackage($"Core/{locale}.json") });
         }
 
         [HttpGet("Reset/{packageName}/{locale}")]

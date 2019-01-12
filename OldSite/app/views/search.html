@@ -1,0 +1,309 @@
+﻿<div class="searchHost col-xs-12">
+    <div class="col-xs-12 col-sm-6 panel panel-default" style="background:none;">
+        <div class="searchString">
+            <div class="panel-heading searchCriteriaTitle" data-bind="html:t('searchCriteria')"></div>
+            <div class="panel-body">
+                <!-- ko if: searchEditState() == 0 -->
+                <span data-bind="html:t('show')"></span>
+                <!-- ko if: !searchCriteria() || searchCriteria().length == 0 -->
+                <span data-bind="html:t('everything')"></span>
+                <!-- /ko -->
+                <!-- ko if: searchCriteria() && searchCriteria().length > 0 -->
+                <span data-bind="html:t('projectsWhere')"></span>
+                <br>
+                <ul data-bind="foreach:searchCriteria">
+                    <li>
+                        <span data-bind="switch: tag.dataType">
+                            <span data-bind="case: $parent.dataTypeBoolean">
+                                <span data-bind="html:$parent.t('theProjectIs')"></span>
+                                <!-- ko if: !data -->
+                                <span data-bind="html:$parent.t('not')"></span>
+                                <!-- /ko -->
+                                <span data-bind="html:tag.displayName"></span>.
+                            </span>
+                            <span data-bind="case: $parent.dataTypeDateTime">
+                                <span data-bind="html:$parent.t('the')"></span>
+                                <span data-bind="html:tag.displayName"></span>
+                                <span data-bind="html:$parent.t('is')"></span>
+                                <span data-bind="switch: criteriaType">
+                                    <span data-bind="case: $parent.criteriaTypeDateAfter">
+                                        <span data-bind="html:$parent.t('after')"></span>
+                                        <span data-bind="html:data1"></span>
+                                    </span>
+                                    <span data-bind="case: $parent.criteriaTypeDateBefore">
+                                        <span data-bind="html:$parent.t('before')"></span>
+                                        <span data-bind="html:data1"></span>
+                                    </span>
+                                    <span data-bind="case: $parent.criteriaTypeDateBetween">
+                                        <span data-bind="html:$parent.t('between')"></span>
+                                        <span data-bind="html:data1"></span>
+                                        <span data-bind="html:$parent.t('and')"></span>
+                                        <span data-bind="html:data2"></span>
+                                    </span>
+                                </span>.
+                            </span>
+                            <span data-bind="case: $parent.dataTypeDropDown">
+                                <span data-bind="html:$parent.t('the')"></span>
+                                <span data-bind="html:tag.displayName"></span>
+                                <span data-bind="html:$parent.t('is')"></span>
+                                <!-- ko if: !criteriaType -->
+                                <span data-bind="html:$parent.t('not')"></span>
+                                <!-- /ko -->
+                                <span data-bind="html:tag.values[data].displayName"></span>.
+                            </span>
+                            <span data-bind="case: $parent.dataTypeString">
+                                <span data-bind="html:$parent.t('the')"></span>
+                                <span data-bind="html:tag.displayName"></span>
+                                <!-- ko if: criteriaType -->
+                                <span data-bind="html:$parent.t('contains')"></span>
+                                <!-- /ko -->
+                                <!-- ko if: !criteriaType -->
+                                <span data-bind="html:$parent.t('excludes')"></span>
+                                <!-- /ko -->
+                                <span data-bind="html:data"></span>.
+                            </span>
+                        </span>
+                        <i class="fa fa-pencil editLineItem" data-bind="click:function(){$parent.setStringOptionCurData($data);}"></i>
+                        <i class="fa fa-trash editLineItem" data-bind="click:function(){$parent.searchCriteria.remove($data);}"></i>
+                    </li>
+                </ul>
+                <!-- /ko -->
+                <div class="buttonDoStuff" data-bind="click:function(){searchEditState(1)}">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-plus-circle fa-stack-1x"></i>
+                    </span>
+                    <span data-bind="html:t('criteria')"></span>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: searchEditState() > 0 -->
+                <div>
+                    <span data-bind="html:t('searchFor')"></span>
+                    <select data-bind="options:tagOptions, optionsText:'displayText', value:currentSearchTag "></select>
+                    <br />
+                    <br />
+                    <!-- ko if: currentSearchTag() && tags() && tags()[currentSearchTag().valueText].dataType == dataTypeDropDown -->
+                    <span data-bind="html:t('whereTheValue')"></span><select data-bind="options:[{txt:t('is'),val:true},{txt:t('isNot'),val:false}], optionsText:'txt', value:searchStringOptionData1 "></select>: <select data-bind="options:Object.getOwnPropertyNames(tags()[currentSearchTag().valueText].values), value:searchStringOptionData2 "></select>
+                    <!-- /ko -->
+                    <!-- ko if: currentSearchTag() && tags() && tags()[currentSearchTag().valueText].dataType == dataTypeDateTime -->
+                    <span data-bind="html:t('whereTheDateIs')"></span><select data-bind="options:[{txt:t('beforeNS'), val: criteriaTypeDateBefore }, {txt:t('afterNS'), val: criteriaTypeDateAfter}, {txt:t('betweenNS'), val:criteriaTypeDateBetween}], optionsText:'txt', value:searchStringOptionData1"></select>: <input type="date" data-bind="value:searchStringOptionData2" />
+                    <!-- ko if: searchStringOptionData1().val == criteriaTypeDateBetween -->
+                    <span data-bind="html:t('and')"></span>
+                    <input type="date" data-bind="value:searchStringOptionData3" />
+                    <!-- /ko -->
+                    <!-- /ko -->
+                    <!-- ko if: currentSearchTag() && tags() && tags()[currentSearchTag().valueText].dataType == dataTypeBoolean -->
+                    <span data-bind="click: searchStringOptionBoolDataChange" style="cursor:pointer">
+                        <i data-bind="css:searchStringOptionBoolDataClass"></i>
+                        <!-- ko if: searchStringOptionData1() && typeof (searchStringOptionData1()) == "boolean" -->
+                        <span data-bind="html:t('including')"></span>
+                        <!-- /ko -->
+                        <!-- ko if: !searchStringOptionData1() || typeof (searchStringOptionData1()) != "boolean" -->
+                        <span data-bind="html:t('excluding')"></span>
+                        <!-- /ko -->
+                        <span data-bind="html:t('projectsWithTheTag')"></span>
+                        <span data-bind="html:tags()[currentSearchTag().valueText].displayName"></span>.
+                    </span>
+                    <!-- /ko -->
+                    <!-- ko if: currentSearchTag() && tags() && tags()[currentSearchTag().valueText].dataType == dataTypeString -->
+                    <span data-bind="html:t('whereTheTag')"></span><select data-bind="options:[{txt:t('includes'),val:true}, {txt:t('excludes'),val:false}], optionsText:'txt', value:searchStringOptionData1"></select>:
+                    <input type="text" data-bind="value:searchStringOptionDataString" />
+                    <!-- /ko -->
+                </div>
+
+                <div class="buttonDoStuff" data-bind="click:searchStringEditDone">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-check-circle fa-stack-1x"></i>
+                    </span>
+                    <span data-bind="html:t('done')"></span>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 panel panel-default">
+        <div class="orderString">
+            <div class="panel-heading orderCriteriaTitle" data-bind="html:t('orderCriteria')"></div>
+            <div class="panel-body">
+                <!-- ko if: orderEditState() == 0 -->
+                <span data-bind="html:t('orderedBy')"></span>
+                <!-- ko if: !orderCriteria() || orderCriteria().length == 0 -->
+                <span data-bind="html:t('nothing')"></span>
+                <!-- /ko -->
+                <!-- ko if: orderCriteria() && orderCriteria().length > 0 -->
+                <br>
+                <ul data-bind="foreach:orderCriteria">
+                    <li>
+                        <span data-bind="switch: tag.dataType">
+                            <span data-bind="case: $parent.dataTypeBoolean">
+                                <span data-bind="html:tag.displayName"></span>
+                                <!-- ko if: criteriaType == $root.criteriaTypeFirst -->
+                                <span data-bind="html:$root.t('first')"></span>.
+                                <!-- /ko -->
+                                <!-- ko if: criteriaType == $root.criteriaTypeLast -->
+                                <span data-bind="html:$root.t('last')"></span>.
+                                <!-- /ko -->
+                            </span>
+                            <span data-bind="case: $parent.dataTypeDateTime">
+                                <span data-bind="html:tag.displayName"></span>
+                                <span data-bind="switch: criteriaType">
+                                    <span data-bind="case: $root.criteriaTypeAscending">
+                                        <span data-bind="html:$root.t('ascending')"></span>.
+                                    </span>
+                                    <span data-bind="case: $root.criteriaTypeDescending">
+                                        <span data-bind="html:$root.t('descending')"></span>.
+                                    </span>
+                                </span>
+                            </span>
+                            <span data-bind="case: $parent.dataTypeDropDown">
+                                <span data-bind="switch: criteriaType">
+                                    <span data-bind="case:$root.criteriaTypeAscending">
+                                        <span data-bind="html:tag.displayName"></span>
+                                        <span data-bind="html:$root.t('ascending')"></span>.
+                                    </span>
+                                    <span data-bind="case:$root.criteriaTypeDescending">
+                                        <span data-bind="html:tag.displayName"></span>
+                                        <span data-bind="html:$root.t('descending')"></span>.
+                                    </span>
+                                    <span data-bind="case:$root.criteriaTypeFirst">
+                                        <span data-bind="html:tag.displayName"></span><span data-bind="html:$root.t('with')"></span><span data-bind="html:tag.values[data].displayName"></span>
+                                        <span data-bind="html:$root.t('first')"></span>.
+                                    </span>
+                                    <span data-bind="case:$root.criteriaTypeLast">
+                                        <span data-bind="html:tag.displayName"></span><span data-bind="html:$root.t('with')"></span><span data-bind="html:tag.values[data].displayName"></span>
+                                        <span data-bind="html:$root.t('last')"></span>.
+                                    </span>
+                                </span>
+                            </span>
+                            <span data-bind="case: $parent.dataTypeString">
+                                <span data-bind="switch: criteriaType">
+                                    <span data-bind="case:$root.criteriaTypeAscending">
+                                        <span data-bind="html:tag.displayName"></span>
+                                        <span data-bind="html:$root.t('ascending')"></span>.
+                                    </span>
+                                    <span data-bind="case:$root.criteriaTypeDescending">
+                                        <span data-bind="html:tag.displayName"></span>
+                                        <span data-bind="html:$root.t('descending')"></span>.
+                                    </span>
+                                    <span data-bind="case:$root.criteriaTypeFirst">
+                                        <span data-bind="html:tag.displayName"></span><span data-bind="html:$root.t('with')"></span><span data-bind="html:data"></span>
+                                        <span data-bind="html:$root.t('first')"></span>.
+                                    </span>
+                                    <span data-bind="case:$root.criteriaTypeLast">
+                                        <span data-bind="html:tag.displayName"></span><span data-bind="html:$root.t('with')"></span><span data-bind="html:data"></span>
+                                        <span data-bind="html:$root.t('last')"></span>.
+                                    </span>
+                                </span>
+                            </span>
+                        </span>
+                        <i class="fa fa-pencil editLineItem" data-bind="click:function(){$root.setOrderOptionCurData($data);}"></i>
+                        <i class="fa fa-trash editLineItem" data-bind="click:function(){$root.orderCriteria.remove($data);}"></i>
+                    </li>
+                </ul>
+                <!-- /ko -->
+                <div class="buttonDoStuff" data-bind="click:function(){orderEditState(1)}">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-plus-circle fa-stack-1x"></i>
+                    </span>
+                    <span data-bind="html:t('criteria')"></span>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: orderEditState() > 0 -->
+                <div>
+                    <span data-bind="html:t('orderBy')"></span>
+                    <select data-bind="options:tagOptions, optionsText:'displayText', value:currentOrderTag "></select>.
+                    <br />
+                    <br />
+                    <!-- ko if: currentOrderTag() && tags() && tags()[currentOrderTag().valueText].dataType == dataTypeDropDown -->
+                    <span data-bind="html:t('ordered')"></span><select data-bind="options:[{txt:t('first'),val:criteriaTypeFirst},{txt:t('last'),val:criteriaTypeLast},{txt:t('alphabeticallyAscending'),val:criteriaTypeAscending},{txt:t('alphabeticallyDescending'),val:criteriaTypeDescending}], optionsText:'txt', value:orderStringOptionData1 "></select>
+                    <!-- ko if: orderStringOptionData1().val == criteriaTypeFirst || orderStringOptionData1().val == criteriaTypeLast -->
+                    <br />
+                    <span data-bind="html:t('whereTheValueIs')"></span>
+                    : <select data-bind="options:Object.getOwnPropertyNames(tags()[currentOrderTag().valueText].values), value:orderStringOptionData2 "></select>
+                    <!-- /ko -->
+                    <!-- /ko -->
+                    <!-- ko if: currentOrderTag() && tags() && tags()[currentOrderTag().valueText].dataType == dataTypeDateTime -->
+                    <span data-bind="html:t('whereTheDatesAre')"></span><select data-bind="options:[{txt:t('ascending'), val: criteriaTypeAscending }, {txt:t('descending'), val: criteriaTypeDescending}], optionsText:'txt', value:orderStringOptionData1"></select>
+                    <!-- /ko -->
+                    <!-- ko if: currentOrderTag() && tags() && tags()[currentOrderTag().valueText].dataType == dataTypeBoolean -->
+                    <span data-bind="click: orderStringOptionBoolDataChange" style="cursor:pointer">
+                        <i data-bind="css:orderStringOptionBoolDataClass"></i>
+                        <span data-bind="html:t('projectsWhichAre')"></span>
+                        <span data-bind="html:tags()[currentOrderTag().valueText].displayName"></span>
+                        <!-- ko if: orderStringOptionData1() && typeof (orderStringOptionData1()) == "boolean" -->
+                        <span data-bind="html:t('first')"></span>.
+                        <!-- /ko -->
+                        <!-- ko if: !orderStringOptionData1() || typeof (orderStringOptionData1()) != "boolean" -->
+                        <span data-bind="html:t('last')"></span>.
+                        <!-- /ko -->
+                    </span>
+                    <!-- /ko -->
+                    <!-- ko if: currentOrderTag() && tags() && tags()[currentOrderTag().valueText].dataType == dataTypeString -->
+                    <span data-bind="html:t('ordered')"></span><select data-bind="options:[{txt:t('first'),val:criteriaTypeFirst},{txt:t('last'),val:criteriaTypeLast},{txt:t('alphabeticallyAscending'),val:criteriaTypeAscending},{txt:t('alphabeticallyDescending'),val:criteriaTypeDescending}], optionsText:'txt', value:orderStringOptionData1 "></select>
+                    <!-- ko if: orderStringOptionData1().val == criteriaTypeFirst || orderStringOptionData1().val == criteriaTypeLast -->
+                    <br />
+                    <span data-bind="html:t('whereTheValueIs')"></span>
+                    : <input type="text" data-bind="value:orderStringOptionDataString" />
+                    <!-- ko if: orderStringOptionData1().val == criteriaTypeFirst -->
+                    <span data-bind="html:t('first')"></span>
+                    <!-- /ko -->
+                    <!-- ko if: orderStringOptionData1().val == criteriaTypeLast -->
+                    <span data-bind="html:t('last')"></span>
+                    <!-- /ko -->
+                    <!-- /ko -->
+                    <!-- /ko -->
+                </div>
+
+                <div class="buttonDoStuff" data-bind="click:orderStringEditDone">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-check-circle fa-stack-1x"></i>
+                    </span>
+                    <span data-bind="html:t('done')"></span>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="featuredHost col-xs-12"></div>
+<div class="resultsHost col-xs-12" data-bind="foreach: searchResults">
+    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 projItm">
+        <div class="panel panel-default">
+            <div class="panel-heading" data-bind="html:project"></div>
+            <div class="tileImgCont">
+                <!-- ko if: imgType == $parent.imgTypeConsole -->
+                <img class="tileImg img-responsive tileImgSq" data-bind="attr: { src: $parent.consoleImg }" />
+                <!-- /ko -->
+                <!-- ko if: imgType == $parent.imgTypeDatabase -->
+                <img class="tileImg img-responsive tileImgSq" data-bind="attr: { src: $parent.databaseImg }" />
+                <!-- /ko -->
+                <!-- ko if: imgType == $parent.imgTypeCustom -->
+                <img class="tileImg img-responsive" data-bind="attr: { src: imgSrc }" />
+                <!-- /ko -->
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item" data-bind="html:(function(){var descLine = description;   while(descLine.indexOf('<br>') > -1){descLine = descLine.replace('<br>', ' ')}  return (descLine.substring(0,150))+'...';})()">
+                </li>
+                <li class="list-group-item">
+                    <div class="leftBtn greyBtn">
+                        Details
+                    </div>
+                    <!-- ko if: linkType == $parent.linkTypeOneDrive -->
+                    <div class="rightBtn greyBtn" data-bind="click:function(){window.open(link)}">
+                        Downlaod
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko if: linkType != $parent.linkTypeOneDrive -->
+                    <div class="rightBtn greyBtn" data-bind="click:function(){window.open(link)}">
+                        Open Link
+                    </div>
+                    <!-- /ko -->
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

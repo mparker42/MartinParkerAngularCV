@@ -1,0 +1,21 @@
+﻿<div>
+    <div data-bind="css:msgClass()">
+        <div class="txtCont">
+            <i class="fa fa-info-circle inform"></i>
+            <div class="innerTextCont" data-bind="html:msg()"></div>
+        </div>
+        <div class="controls" data-bind="click:closeMsg">
+            <i class="close fa fa-times"></i>
+        </div>
+        <div data-bind="css:hideStartCSS, click:hideStartClick">
+            <span data-bind="html:hideStartHtml"></span>
+            <i data-bind="css:hideStartCheckboxCSS"></i>
+        </div>
+    </div>
+    <span class="fa-stack fa-lg msgIndent helpIcon" data-bind="click:helpClick">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-question-circle fa-stack-1x"></i>
+    </span>
+
+    <div class="page-host msgIndent" data-bind="router: { transition:'entrance' }"></div>
+</div>
