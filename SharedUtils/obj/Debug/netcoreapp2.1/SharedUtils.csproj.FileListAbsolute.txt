@@ -1,9 +1,0 @@
-C:\Users\funny\Desktop\CV\SharedUtils\bin\Debug\netcoreapp2.1\SharedUtils.deps.json
-C:\Users\funny\Desktop\CV\SharedUtils\bin\Debug\netcoreapp2.1\SharedUtils.dll
-C:\Users\funny\Desktop\CV\SharedUtils\obj\Debug\netcoreapp2.1\SharedUtils.csprojAssemblyReference.cache
-C:\Users\funny\Desktop\CV\SharedUtils\obj\Debug\netcoreapp2.1\SharedUtils.csproj.CoreCompileInputs.cache
-C:\Users\funny\Desktop\CV\SharedUtils\obj\Debug\netcoreapp2.1\SharedUtils.AssemblyInfoInputs.cache
-C:\Users\funny\Desktop\CV\SharedUtils\obj\Debug\netcoreapp2.1\SharedUtils.AssemblyInfo.cs
-C:\Users\funny\Desktop\CV\SharedUtils\bin\Debug\netcoreapp2.1\SharedUtils.pdb
-C:\Users\funny\Desktop\CV\SharedUtils\obj\Debug\netcoreapp2.1\SharedUtils.dll
-C:\Users\funny\Desktop\CV\SharedUtils\obj\Debug\netcoreapp2.1\SharedUtils.pdb
