@@ -5,9 +5,9 @@ VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MartinParkerAngularCV", "MartinParkerAngularCV\MartinParkerAngularCV.csproj", "{4259D0E4-41AB-4277-8E3E-AC802B462F7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TranslationsUpload", "TranslationsUpload\TranslationsUpload.csproj", "{A548EFBF-071F-456C-9C84-2CB7B81F4DB4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TranslationsUpload", "TranslationsUpload\TranslationsUpload.csproj", "{A548EFBF-071F-456C-9C84-2CB7B81F4DB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedUtils", "SharedUtils\SharedUtils.csproj", "{43FC61AB-8814-4126-9C0E-FC2456AD8906}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedUtils", "SharedUtils\SharedUtils.csproj", "{43FC61AB-8814-4126-9C0E-FC2456AD8906}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

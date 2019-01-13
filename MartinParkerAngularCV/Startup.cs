@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MartinParkerAngularCV.Utils;
 
 namespace MartinParkerAngularCV
 {
@@ -29,7 +30,8 @@ namespace MartinParkerAngularCV
             services.AddMemoryCache();
 
             services.AddSingleton<KeyVaultHelper>()
-                .AddSingleton<BlobStoreHelper>();
+                .AddSingleton<BlobStoreHelper>()
+                .AddSingleton<TranslationHelper>();
 
             ServiceProvider provider = services.BuildServiceProvider();
             KeyVaultHelper keyVaultHelper = provider.GetService<KeyVaultHelper>();
@@ -49,6 +51,8 @@ namespace MartinParkerAngularCV
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseRequestLocalization();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

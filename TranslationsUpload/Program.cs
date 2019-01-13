@@ -21,25 +21,28 @@ namespace TranslationsUpload
             CultureInfo[] cultures = CultureInfo.GetCultures(CultureTypes.NeutralCultures);
             string rootPath = AppDomain.CurrentDomain.BaseDirectory,
                 unresolvedTranslationPath = Path.Combine(rootPath, "UnResolvedTranslations"),
-                fallbackTranslationsAsString = File.ReadAllText(Path.Combine(unresolvedTranslationPath, "en.json")),
                 resolvedUploadPath = Path.Combine(rootPath, "Upload", "Translations");
 
-            Dictionary<string, Dictionary<string, string>> fallbackTranslations = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(fallbackTranslationsAsString);
+            Dictionary<string, Dictionary<string, string>> fallbackTranslations = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(File.ReadAllText(Path.Combine(unresolvedTranslationPath, "en.json")));
 
-            if (!Directory.Exists(resolvedUploadPath))
-                Directory.CreateDirectory(resolvedUploadPath);
+            foreach (string section in fallbackTranslations.Keys)
+            {
+                string resolvedSectionUploadPath = Path.Combine(resolvedUploadPath, section);
+                if (!Directory.Exists(resolvedSectionUploadPath))
+                    Directory.CreateDirectory(resolvedSectionUploadPath);
+            }
 
             foreach (CultureInfo currentCulture in cultures)
             {
                 string locale = currentCulture.TwoLetterISOLanguageName,
-                    unresolvedPath = Path.Combine(unresolvedTranslationPath, $"{locale}.json"),
-                    resolvedPath = Path.Combine(resolvedUploadPath, $"{locale}.json");
+                    unresolvedPath = Path.Combine(unresolvedTranslationPath, $"{locale}.json");
 
                 if (locale == "")
                     continue;
 
                 if (!File.Exists(unresolvedPath))
-                    File.WriteAllText(resolvedPath, fallbackTranslationsAsString);
+                    foreach(string section in fallbackTranslations.Keys)
+                        File.WriteAllText(Path.Combine(resolvedUploadPath, section, $"{locale}.json"), JsonConvert.SerializeObject(fallbackTranslations[section]));
                 else
                 {
                     Dictionary<string, Dictionary<string, string>> unresolvedTranslations = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(File.ReadAllText(unresolvedPath));
@@ -47,7 +50,7 @@ namespace TranslationsUpload
                     foreach (string section in fallbackTranslations.Keys)
                     {
                         if (!unresolvedTranslations.ContainsKey(section))
-                            unresolvedTranslations.Add(section, fallbackTranslations[section]);
+                            File.WriteAllText(Path.Combine(resolvedUploadPath, section, $"{locale}.json"), JsonConvert.SerializeObject(fallbackTranslations[section]));
                         else
                         {
                             Dictionary<string, string> fallbackTranslationsSection = fallbackTranslations[section],
@@ -56,14 +59,14 @@ namespace TranslationsUpload
                             foreach (KeyValuePair<string, string> translation in fallbackTranslationsSection)
                                 if (!unresolvedTranslationsSection.ContainsKey(translation.Key))
                                     unresolvedTranslationsSection.Add(translation.Key, translation.Value);
+
+                            File.WriteAllText(Path.Combine(resolvedUploadPath, section, $"{locale}.json"), JsonConvert.SerializeObject(unresolvedTranslationsSection));
                         }
                     }
-
-                    File.WriteAllText(resolvedPath, JsonConvert.SerializeObject(unresolvedTranslations));
                 }
             }
 
-
+            Console.WriteLine("Putting all the files into blob");
 
             var provider = new ServiceCollection()
                        .AddMemoryCache()
@@ -71,11 +74,7 @@ namespace TranslationsUpload
 
             var cache = provider.GetService<IMemoryCache>();
 
-            new BlobStoreHelper(Options.Create(new BlobStoreConfiguration() { StoreSecretURL = "martinparkercvstoreConnectionString/c9c196809fe04584a65159ed0fc14d8d" }), new KeyVaultHelper(Options.Create(new KeyVaultConfiguration() { BaseSecretURL = "https://cvvault.vault.azure.net/secrets/" }), cache)).UploadFolderToBlob(Path.Combine(rootPath, "Upload")).Wait();
-
-            //cultures[0].TextInfo.IsRightToLeft
-
-            Console.WriteLine("Putting all the files into blob");
+            new BlobStoreHelper(Options.Create(new BlobStoreConfiguration() { StoreSecretURL = "martinparkercvstoreConnectionString" }), new KeyVaultHelper(Options.Create(new KeyVaultConfiguration() { BaseSecretURL = "https://cvvault.vault.azure.net/secrets/" }), cache)).UploadFolderToBlob(Path.Combine(rootPath, "Upload")).Wait();
         }
     }
 }

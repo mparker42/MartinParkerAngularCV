@@ -2,13 +2,61 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>MartinParkerAngularCV</title>
+  <title>.</title>
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script type="text/javascript">
+    function updateTitle() {
+      if (document.title.length == 3)
+        document.title = ".";
+      else
+        document.title += ".";
+    }
+
+    var loadingTitle = window.setInterval(updateTitle, 500)
+  </script>
+  <style>
+    @keyframes spinnerAnimation {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    body {
+      margin: 0;
+    }
+    .spinnerContainer {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .spinner {
+      border: 0.5em solid black;
+      border-right-style: dotted;
+      border-radius: 100em;
+      width: 5em;
+      height: 5em;
+      margin: auto;
+      animation: spinnerAnimation 1s ease-out infinite;
+    }
+  </style>
 </head>
 <body>
-  <app-root>Loading...</app-root>
+  <app-root>
+    <div class="spinnerContainer">
+      <div class="spinner">
+      </div>
+    </div>
+  </app-root>
 </body>
 </html>
