@@ -47,7 +47,7 @@ define(['durandal/system', 'durandal/app', 'durandal/viewLocator', 'i18next'], f
             resources: {
                 en: {
                     translation: {
-                        'itmOpeningMsg': '<b>Pardon my dust</b><br>I am currently constructing this site and it will be finished as soon as I can.'/*'This is a custom built portfolio site.<br>Help for navigating this site can be found by clicking the <i class="fa fa-question-circle" style="color:rgb(66, 144, 66)"></i> icon below.'*/,
+                        'itmOpeningMsg': '<b>Pardon my dust</b><br>This development path was abandoned in favor of an Agular & Azure approach.<br>You can track the development of the new site <a href="https://github.com/mparker42/MartinParkerAngularCV">here</a>.'/*'This is a custom built portfolio site.<br>Help for navigating this site can be found by clicking the <i class="fa fa-question-circle" style="color:rgb(66, 144, 66)"></i> icon below.'*/,
                         'itmNeverShow': 'Never Show This Again',
                         'home': 'Home',
                         'itmProg1Desc': 'Programming 1 acted as my introduction to programming.<br>The module covered basics from variables and loops up to classes.<br>The first projects were built in notepad and later projects were built in Visual Studio 2010.',
