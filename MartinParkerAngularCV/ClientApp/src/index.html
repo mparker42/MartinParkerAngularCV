@@ -32,7 +32,6 @@
     }
     .spinnerContainer {
       display: flex;
-      align-items: center;
       height: 100%;
       width: 100%;
       position: absolute;
@@ -40,21 +39,27 @@
       padding: 0;
       box-sizing: border-box;
     }
+    .innerSpinnerContainer {
+      margin: auto;
+    }
     .spinner {
-      border: 0.5em solid black;
-      border-right-style: dotted;
+      border: 0.2em solid black;
+      border-right-color: rgba(0,0,0,0);
       border-radius: 100em;
       width: 5em;
       height: 5em;
-      margin: auto;
-      animation: spinnerAnimation 1s ease-out infinite;
+      animation: spinnerAnimation 1s linear infinite;
     }
   </style>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
   <app-root>
     <div class="spinnerContainer">
-      <div class="spinner">
+      <div class="innerSpinnerContainer">
+        <div class="spinner">
+        </div>
       </div>
     </div>
   </app-root>
