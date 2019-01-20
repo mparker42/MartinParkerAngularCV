@@ -15,3 +15,12 @@
   top: 0;
   z-index: 1;
 }
+
+.mat-toolbar .mat-nav-list {
+  display: flex;
+  padding: 0;
+}
+
+.mat-toolbar .mat-list-item {
+  display: inline-block;
+}

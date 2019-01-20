@@ -15,6 +15,9 @@ export class NavigationMenuComponent {
       map(result => result.matches)
     );
 
+
+  showSideNav$: boolean;
+
   constructor(private breakpointObserver: BreakpointObserver) {}
 
 }
