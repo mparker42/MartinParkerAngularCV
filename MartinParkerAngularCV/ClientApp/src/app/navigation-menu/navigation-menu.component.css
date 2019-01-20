@@ -24,3 +24,7 @@
 .mat-toolbar .mat-list-item {
   display: inline-block;
 }
+
+.mat-toolbar .mat-list-base .mat-list-item {
+  color: inherit;
+}

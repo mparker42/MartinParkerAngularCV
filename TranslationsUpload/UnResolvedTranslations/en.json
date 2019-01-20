@@ -1,7 +1,15 @@
 {
   "core": {
-    "loadingMessage": "Loading{0}",
     "pageTitle": "Martin Parker Portfolio",
     "pageTitleExpanded": "Martin Parker Portfolio | {0}"
+  },
+  "navigation": {
+    "pageTitle": "Martin Parker Portfolio",
+    "about": "About This Site",
+    "portfolio": "Portfolio",
+    "cv": "CV",
+    "menu": "Menu",
+    "menuIconInstructions": "Toggle the navigation menu",
+    "menuIconDescription": "Navigation menu toggle icon"
   }
 }

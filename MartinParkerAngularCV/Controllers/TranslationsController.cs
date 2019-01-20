@@ -26,17 +26,29 @@ namespace MartinParkerAngularCV.Controllers
             TranslationHelper = translationHelper;
         }
 
-        [HttpGet("Core/{locale}")]
-        public async Task<IActionResult> GetCoreTranslations(string locale)
+        private async Task<IActionResult> GetTranslations(string package)
         {
             CultureInfo culture = Request.HttpContext.Features.Get<IRequestCultureFeature>().RequestCulture.Culture;
 
             string safeLocale = TranslationHelper.TransformToSafeLocale(culture.TwoLetterISOLanguageName);
             bool isRTL = culture.TextInfo.IsRightToLeft;
 
-            Dictionary<string,string> translations = await TranslationHelper.GetTranslationPackage($"core/{safeLocale}.json");
+            Dictionary<string, string> translations = await TranslationHelper.GetTranslationPackage($"{package}/{safeLocale}.json");
 
-            return Ok(new { resolvedLocale = locale, translations, isRTL });
+            return Ok(new { resolvedLocale = safeLocale, translations, isRTL });
+        }
+
+        // We need to have a function per translation package to prevent people navigating around the blob store
+        [HttpGet("Core")]
+        public async Task<IActionResult> GetCoreTranslations()
+        {
+            return await GetTranslations("core");
+        }
+
+        [HttpGet("Navigation")]
+        public async Task<IActionResult> GetNavigationTranslations()
+        {
+            return await GetTranslations("navigation");
         }
 
         [HttpGet("Reset/{packageName}/{locale}")]

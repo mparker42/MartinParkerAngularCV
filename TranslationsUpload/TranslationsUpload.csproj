@@ -9,14 +9,10 @@
 
   <ItemGroup>
     <None Remove="UnResolvedTranslations\en.json" />
-    <None Remove="UnResolvedTranslations\fr.json" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="UnResolvedTranslations\en.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="UnResolvedTranslations\fr.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -11,6 +11,8 @@ import { HomeComponent } from './home/home.component';
 import { NavigationMenuComponent } from './navigation-menu/navigation-menu.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import { APIRequestService } from './services/api-request-service';
+import { TranslationsService } from './services/translation-service';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,10 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
     MatIconModule,
     MatListModule
   ],
-  providers: [],
+  providers: [
+    APIRequestService,
+    TranslationsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

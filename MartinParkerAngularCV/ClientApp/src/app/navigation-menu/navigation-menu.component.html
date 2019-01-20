@@ -1,31 +1,31 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) && showSideNav$"
-               (closed)="showSideNav$ = false"
-               *ngIf="(isHandset$ | async)">
-    <mat-toolbar>Menu</mat-toolbar>
+      [attr.role]="(isHandset | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset | async) ? 'over' : 'side'"
+      [opened]="(isHandset | async) && showSideNav"
+               (closed)="showSideNav = false"
+               *ngIf="(isHandset | async)">
+    <mat-toolbar>{{translations?.menu}}</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
+      <a mat-list-item href="#">{{translations?.about}}</a>
+      <a mat-list-item href="#">{{translations?.portfolio}}</a>
+      <a mat-list-item href="#">{{translations?.cv}}</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
       <button type="button"
-              aria-label="Toggle sidenav"
+              attr.aria-label="{{translations?.menuIconInstructions}}"
               mat-icon-button
-              (click)="showSideNav$ = !showSideNav$"
-              *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+              (click)="showSideNav = !showSideNav"
+              *ngIf="isHandset | async">
+        <mat-icon attr.aria-label="{{translations?.menuIconDescription}}">menu</mat-icon>
       </button>
       <mat-nav-list>
-        <a mat-list-item href="#">MartinParkerAngularCV</a>
-        <a mat-list-item href="#" *ngIf="!(isHandset$ | async)">Link 1</a>
-        <a mat-list-item href="#" *ngIf="!(isHandset$ | async)">Link 2</a>
-        <a mat-list-item href="#" *ngIf="!(isHandset$ | async)">Link 3</a>
+        <a mat-list-item href="#">{{translations?.pageTitle}}</a>
+        <a mat-list-item href="#" *ngIf="!(isHandset | async)">{{translations?.about}}</a>
+        <a mat-list-item href="#" *ngIf="!(isHandset | async)">{{translations?.portfolio}}</a>
+        <a mat-list-item href="#" *ngIf="!(isHandset | async)">{{translations?.cv}}</a>
       </mat-nav-list>
     </mat-toolbar>
 

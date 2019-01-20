@@ -26,8 +26,20 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\src\interfaces\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\src\interfaces\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="ClientApp\src\interfaces\**" />
+    <None Remove="ClientApp\src\interfaces\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\src\app\services\api-request-service.ts" />
+    <None Remove="ClientApp\src\app\services\translation-service.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,6 +48,11 @@
 
   <ItemGroup>
     <None Include="Pages\RazorIndex.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\services\api-request-service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\translation-service.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
