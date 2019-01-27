@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MartinParkerAngularCV.SharedUtilities.Models.Configuration
+namespace MartinParkerAngularCV.SharedUtils.Models.Configuration
 {
     public class KeyVaultConfiguration
     {

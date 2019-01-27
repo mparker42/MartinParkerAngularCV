@@ -4,12 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Azure.KeyVault;
-using MartinParkerAngularCV.SharedUtilities.Models.Configuration;
+using MartinParkerAngularCV.SharedUtils.Models.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.Azure.KeyVault.Models;
 using Microsoft.Extensions.Caching.Memory;
 
-namespace MartinParkerAngularCV.SharedUtilities
+namespace MartinParkerAngularCV.SharedUtils
 {
     public class KeyVaultHelper
     {

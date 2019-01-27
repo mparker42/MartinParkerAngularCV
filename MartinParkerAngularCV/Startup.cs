@@ -1,5 +1,5 @@
-using MartinParkerAngularCV.SharedUtilities.Models.Configuration;
-using MartinParkerAngularCV.SharedUtilities;
+using MartinParkerAngularCV.SharedUtils.Models.Configuration;
+using MartinParkerAngularCV.SharedUtils;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MartinParkerAngularCV.Utils;
+using MartinParkerAngularCV.SharedUtils.Models.ServiceBus;
+using MartinParkerAngularCV.SharedUtils.Enums;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace MartinParkerAngularCV
 {
@@ -26,21 +29,30 @@ namespace MartinParkerAngularCV
 
             services.Configure<KeyVaultConfiguration>(Configuration.GetSection("KeyVault"));
             services.Configure<BlobStoreConfiguration>(Configuration.GetSection("BlobStore"));
+            services.Configure<ServiceBusConfiguration>(Configuration.GetSection("ServiceBus"));
 
             services.AddMemoryCache();
 
             services.AddSingleton<KeyVaultHelper>()
                 .AddSingleton<BlobStoreHelper>()
-                .AddSingleton<TranslationHelper>();
+                .AddSingleton<TranslationHelper>()
+                .AddSingleton<ServiceBusHelper>();
+
+            services.AddMemoryCache();
 
             ServiceProvider provider = services.BuildServiceProvider();
-            KeyVaultHelper keyVaultHelper = provider.GetService<KeyVaultHelper>();
 
-            services.AddDistributedRedisCache(options =>
-            {
-                options.Configuration = keyVaultHelper.GetSecret(Configuration.GetValue<string>("RedisSecretURL")).Result;
-                options.InstanceName = "Core";
-            });
+            IMemoryCache cache = provider.GetService<IMemoryCache>();
+
+            provider
+                .GetService<ServiceBusHelper>()
+                .Subscribe(
+                    new ResetTranslationsCacheSubsriptionRequirements(
+                        ServiceBusTopic.ResetTranslationsCache, 
+                        "CoreAPI", 
+                        cache
+                    )
+                ).Wait();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

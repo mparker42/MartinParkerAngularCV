@@ -1,4 +1,4 @@
-﻿using MartinParkerAngularCV.SharedUtilities;
+﻿using MartinParkerAngularCV.SharedUtils;
 using Microsoft.Extensions.Caching.Distributed;
 using Newtonsoft.Json;
 using System;

@@ -1,5 +1,5 @@
-﻿using MartinParkerAngularCV.SharedUtilities;
-using MartinParkerAngularCV.SharedUtilities.Models.Configuration;
+﻿using MartinParkerAngularCV.SharedUtils;
+using MartinParkerAngularCV.SharedUtils.Models.Configuration;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,12 +9,15 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using Microsoft.Extensions.Options;
+using MartinParkerAngularCV.SharedUtils.Models.ServiceBus;
+using MartinParkerAngularCV.SharedUtils.Enums;
+using System.Threading.Tasks;
 
 namespace TranslationsUpload
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             Console.WriteLine("Resolving translations");
 
@@ -25,11 +28,15 @@ namespace TranslationsUpload
 
             Dictionary<string, Dictionary<string, string>> fallbackTranslations = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(File.ReadAllText(Path.Combine(unresolvedTranslationPath, "en.json")));
 
+            List<string> sections = new List<string>();
+
             foreach (string section in fallbackTranslations.Keys)
             {
                 string resolvedSectionUploadPath = Path.Combine(resolvedUploadPath, section);
                 if (!Directory.Exists(resolvedSectionUploadPath))
                     Directory.CreateDirectory(resolvedSectionUploadPath);
+
+                sections.Add(section);
             }
 
             foreach (CultureInfo currentCulture in cultures)
@@ -74,7 +81,35 @@ namespace TranslationsUpload
 
             var cache = provider.GetService<IMemoryCache>();
 
-            new BlobStoreHelper(Options.Create(new BlobStoreConfiguration() { StoreSecretURL = "martinparkercvstoreConnectionString" }), new KeyVaultHelper(Options.Create(new KeyVaultConfiguration() { BaseSecretURL = "https://cvvault.vault.azure.net/secrets/" }), cache)).UploadFolderToBlob(Path.Combine(rootPath, "Upload")).Wait();
+            var keyVaultHelper = new KeyVaultHelper(
+                    Options.Create(
+                        new KeyVaultConfiguration()
+                        {
+                            BaseSecretURL = "https://cvvault.vault.azure.net/secrets/"
+                        }
+                    ), cache);
+
+            await new BlobStoreHelper(
+                Options.Create(
+                    new BlobStoreConfiguration()
+                    {
+                        StoreSecretURL = "martinparkercvstoreConnectionString"
+                    }
+                ), 
+                keyVaultHelper
+            ).UploadFolderToBlob(Path.Combine(rootPath, "Upload"));
+
+            Console.WriteLine("Sending update message to subscribers");
+
+            await new ServiceBusHelper(
+                Options.Create(
+                    new ServiceBusConfiguration()
+                    {
+                        ServiceBusSecretURL = "martinparkercvserviceBusConnectionString"
+                    }
+                ), 
+                keyVaultHelper
+            ).SendMessage(new ResetTranslationsCacheMessage(ServiceBusTopic.ResetTranslationsCache, sections));
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using MartinParkerAngularCV.SharedUtilities.Models.Configuration;
+﻿using MartinParkerAngularCV.SharedUtils.Models.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
@@ -8,7 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MartinParkerAngularCV.SharedUtilities
+namespace MartinParkerAngularCV.SharedUtils
 {
     public class BlobStoreHelper
     {
