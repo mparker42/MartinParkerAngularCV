@@ -1,4 +1,5 @@
-﻿using MartinParkerAngularCV.SharedUtils.Enums;
+﻿using MartinParkerAngularCV.SharedUtils.Constants;
+using MartinParkerAngularCV.SharedUtils.Enums;
 using MartinParkerAngularCV.SharedUtils.Interfaces;
 using MartinParkerAngularCV.SharedUtils.Models.Configuration;
 using MartinParkerAngularCV.SharedUtils.Models.ServiceBus;
@@ -94,7 +95,7 @@ namespace MartinParkerAngularCV.SharedUtils
                             throw new InvalidOperationException("Incorrect message passed to ResetTranslationsCache topic. Actual Message: " + bodyString);
 
                         foreach (string cacheName in castedMessage.CacheNames)
-                            castedModel.Cache.Remove(cacheName);
+                            castedModel.DistributedCache.Remove(TranslationConstants._cachePrefix + cacheName);
 
                         return Task.CompletedTask;
                     }, messageHandlerOptions);

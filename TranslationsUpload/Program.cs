@@ -35,8 +35,6 @@ namespace TranslationsUpload
                 string resolvedSectionUploadPath = Path.Combine(resolvedUploadPath, section);
                 if (!Directory.Exists(resolvedSectionUploadPath))
                     Directory.CreateDirectory(resolvedSectionUploadPath);
-
-                sections.Add(section);
             }
 
             foreach (CultureInfo currentCulture in cultures)
@@ -48,8 +46,12 @@ namespace TranslationsUpload
                     continue;
 
                 if (!File.Exists(unresolvedPath))
-                    foreach(string section in fallbackTranslations.Keys)
+                    foreach (string section in fallbackTranslations.Keys)
+                    {
                         File.WriteAllText(Path.Combine(resolvedUploadPath, section, $"{locale}.json"), JsonConvert.SerializeObject(fallbackTranslations[section]));
+
+                        sections.Add($"{section}/{locale}.json");
+                    }
                 else
                 {
                     Dictionary<string, Dictionary<string, string>> unresolvedTranslations = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(File.ReadAllText(unresolvedPath));
@@ -69,6 +71,8 @@ namespace TranslationsUpload
 
                             File.WriteAllText(Path.Combine(resolvedUploadPath, section, $"{locale}.json"), JsonConvert.SerializeObject(unresolvedTranslationsSection));
                         }
+
+                        sections.Add($"{section}/{locale}.json");
                     }
                 }
             }

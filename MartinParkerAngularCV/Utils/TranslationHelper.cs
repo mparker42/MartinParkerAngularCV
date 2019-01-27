@@ -1,4 +1,5 @@
 ﻿using MartinParkerAngularCV.SharedUtils;
+using MartinParkerAngularCV.SharedUtils.Constants;
 using Microsoft.Extensions.Caching.Distributed;
 using Newtonsoft.Json;
 using System;
@@ -15,8 +16,7 @@ namespace MartinParkerAngularCV.Utils
         private KeyVaultHelper KeyVaultHelper { get; }
         private BlobStoreHelper BlobStoreHelper { get; }
         private IDistributedCache DistributedCache { get; }
-        private readonly string _cachePrefix = "Translations_",
-            _blobPrefix = "Translations/";
+        private readonly string _blobPrefix = "Translations/";
 
         public TranslationHelper(KeyVaultHelper keyVaultHelper, IDistributedCache distributedCache, BlobStoreHelper blobStoreHelper)
         {
@@ -43,14 +43,14 @@ namespace MartinParkerAngularCV.Utils
         {
             string translations = await BlobStoreHelper.GetBlobAsString(_blobPrefix + packageName);
 
-            DistributedCache.Set(_cachePrefix + packageName, Encoding.UTF8.GetBytes(translations));
+            DistributedCache.Set(TranslationConstants._cachePrefix + packageName, Encoding.UTF8.GetBytes(translations));
 
             return JsonConvert.DeserializeObject<Dictionary<string, string>>(translations);
         }
 
         internal async Task<Dictionary<string, string>> GetTranslationPackage(string packageName)
         {
-            byte[] cachedPackageBytes = await DistributedCache.GetAsync(_cachePrefix + packageName);
+            byte[] cachedPackageBytes = await DistributedCache.GetAsync(TranslationConstants._cachePrefix + packageName);
 
             if (cachedPackageBytes != null)
                 return JsonConvert.DeserializeObject<Dictionary<string,string>>(Encoding.UTF8.GetString(cachedPackageBytes));

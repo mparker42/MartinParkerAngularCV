@@ -11,6 +11,7 @@ using MartinParkerAngularCV.Utils;
 using MartinParkerAngularCV.SharedUtils.Models.ServiceBus;
 using MartinParkerAngularCV.SharedUtils.Enums;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Caching.Distributed;
 
 namespace MartinParkerAngularCV
 {
@@ -38,11 +39,9 @@ namespace MartinParkerAngularCV
                 .AddSingleton<TranslationHelper>()
                 .AddSingleton<ServiceBusHelper>();
 
-            services.AddMemoryCache();
-
             ServiceProvider provider = services.BuildServiceProvider();
 
-            IMemoryCache cache = provider.GetService<IMemoryCache>();
+            IDistributedCache distributedCache = provider.GetService<IDistributedCache>();
 
             provider
                 .GetService<ServiceBusHelper>()
@@ -50,7 +49,7 @@ namespace MartinParkerAngularCV
                     new ResetTranslationsCacheSubsriptionRequirements(
                         ServiceBusTopic.ResetTranslationsCache, 
                         "CoreAPI", 
-                        cache
+                        distributedCache
                     )
                 ).Wait();
 

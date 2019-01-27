@@ -3,21 +3,22 @@ using System.Collections.Generic;
 using System.Text;
 using MartinParkerAngularCV.SharedUtils.Enums;
 using MartinParkerAngularCV.SharedUtils.Interfaces;
+using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace MartinParkerAngularCV.SharedUtils.Models.ServiceBus
 {
     public class ResetTranslationsCacheSubsriptionRequirements : ISerivceBusTopicSubscription
     {
-        public ResetTranslationsCacheSubsriptionRequirements(ServiceBusTopic topic, string context, IMemoryCache cache)
+        public ResetTranslationsCacheSubsriptionRequirements(ServiceBusTopic topic, string context, IDistributedCache distributedCache)
         {
             Topic = topic;
             Context = context;
-            Cache = cache;
+            DistributedCache = distributedCache;
         }
 
         public ServiceBusTopic Topic { get; }
         public string Context { get; }
-        public IMemoryCache Cache { get; }
+        public IDistributedCache DistributedCache { get; }
     }
 }
