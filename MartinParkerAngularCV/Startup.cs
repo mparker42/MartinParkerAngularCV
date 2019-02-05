@@ -39,20 +39,6 @@ namespace MartinParkerAngularCV
                 .AddSingleton<TranslationHelper>()
                 .AddSingleton<ServiceBusHelper>();
 
-            ServiceProvider provider = services.BuildServiceProvider();
-
-            IDistributedCache distributedCache = provider.GetService<IDistributedCache>();
-
-            provider
-                .GetService<ServiceBusHelper>()
-                .Subscribe(
-                    new ResetTranslationsCacheSubsriptionRequirements(
-                        ServiceBusTopic.ResetTranslationsCache, 
-                        "CoreAPI", 
-                        distributedCache
-                    )
-                ).Wait();
-
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
@@ -60,7 +46,7 @@ namespace MartinParkerAngularCV
             });
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ServiceBusHelper serviceBusHelper, IDistributedCache distributedCache)
         {
             app.UseRequestLocalization();
 
@@ -94,6 +80,15 @@ namespace MartinParkerAngularCV
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
+
+            serviceBusHelper
+                .Subscribe(
+                    new ResetTranslationsCacheSubsriptionRequirements(
+                        ServiceBusTopic.ResetTranslationsCache,
+                        "CoreAPI",
+                        distributedCache
+                    )
+                ).Wait();
         }
     }
 }
