@@ -1,14 +1,19 @@
-﻿import { Component } from '@angular/core';
+import { Component } from '@angular/core';
+import { TranslationsService } from '../services/translation-service';
 
 @Component({
-    selector: 'app-about',
+    selector: 'about',
     templateUrl: './about.component.html',
     styleUrls: ['./about.component.scss']
 })
-/** about component*/
-export class AboutComponent {
-    /** about ctor */
-    constructor() {
 
-    }
+export class AboutComponent {
+
+  translations: object;
+
+  constructor(private translationService: TranslationsService) {
+    this.translationService.getTranslations('About').subscribe(result => {
+      this.translations = result;
+    });
+  }
 }

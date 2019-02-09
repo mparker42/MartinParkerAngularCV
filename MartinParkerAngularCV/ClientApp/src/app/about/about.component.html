@@ -1,1 +1,12 @@
-﻿<div style="border: 1px solid red">about Component</div>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{translations?.title}}
+    </mat-panel-title>
+    <mat-panel-description>
+      {{translations?.summary}}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <div>{{translations?.detailOne}}</div>
+</mat-expansion-panel>

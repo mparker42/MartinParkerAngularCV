@@ -10,11 +10,13 @@ import localeEnGB from '@angular/common/locales/en-GB';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavigationMenuComponent } from './navigation-menu/navigation-menu.component';
+import { AboutComponent } from "./about/about.component";
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 import { APIRequestService } from './services/api-request-service';
 import { TranslationsService } from './services/translation-service';
 import { registerLocaleData } from '@angular/common';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 registerLocaleData(localeEnGB, 'en-GB')
 
@@ -22,7 +24,8 @@ registerLocaleData(localeEnGB, 'en-GB')
   declarations: [
     AppComponent,
     HomeComponent,
-    NavigationMenuComponent
+    NavigationMenuComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -37,7 +40,8 @@ registerLocaleData(localeEnGB, 'en-GB')
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatExpansionModule
   ],
   providers: [
     APIRequestService,

@@ -14,6 +14,7 @@
   },
   "about": {
     "title": "About This Site",
-    "summary": "Built with Angular and .NET Core; This site indicates both what I can do and where I'm heading as a programmer"
+    "summary": "Built with Angular and .NET Core; This site indicates both what I can do and where I'm heading as a programmer.",
+    "detailOne":  "To be written on completion of the final site archetecture..."
   }
 }
