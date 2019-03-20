@@ -1,1 +1,33 @@
-﻿
+@import '~@angular/material/theming';
+
+.mat-expansion-panel {
+  box-shadow: none;
+  background-color: transparent;
+  text-align: center;
+
+  .mat-expansion-panel-header[aria-disabled=true] {
+    color: $dark-primary-text;
+  }
+
+  .mat-expansion-panel-header[aria-disabled=false] {
+    display: inline-flex;
+    height: 64px;
+
+    &:hover {
+      background: rgba(0,0,0,.04);
+    }
+  }
+
+  .normalAlign {
+    text-align: left;
+    text-align: start;
+  }
+}
+
+.centered {
+  text-align: center;
+}
+
+button {
+  padding: 0 3em;
+}

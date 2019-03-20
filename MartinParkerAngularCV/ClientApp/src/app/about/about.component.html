@@ -1,12 +1,21 @@
-<mat-expansion-panel>
+<h1>
+  {{translations?.title}}
+</h1>
+<mat-expansion-panel #aboutPanel [hideToggle]="!showAbout" [expanded]="showAbout" (closed)="hideAbout()" [disabled]="!showAbout">
   <mat-expansion-panel-header>
     <mat-panel-title>
-      {{translations?.title}}
+      <ng-container *ngIf="showAbout">{{translations?.hide}}</ng-container>
+      <ng-container *ngIf="!showAbout">{{translations?.summary}}</ng-container>
     </mat-panel-title>
-    <mat-panel-description>
-      {{translations?.summary}}
-    </mat-panel-description>
   </mat-expansion-panel-header>
 
-  <div>{{translations?.detailOne}}</div>
+  <div class="normalAlign">{{translations?.detailOne}}</div>
 </mat-expansion-panel>
+
+<div class="centered">
+  <button mat-button #aboutMoreDetail color="primary" (click)="toggleAbout()">
+    <ng-container *ngIf="showAbout">{{translations?.showLess}}</ng-container>
+    <ng-container *ngIf="!showAbout">{{translations?.showMore}}</ng-container>
+  </button>
+</div>
+<hr />

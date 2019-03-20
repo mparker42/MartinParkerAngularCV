@@ -15,7 +15,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 import { APIRequestService } from './services/api-request-service';
 import { TranslationsService } from './services/translation-service';
-import { registerLocaleData } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import { MatExpansionModule } from '@angular/material/expansion';
 
 registerLocaleData(localeEnGB, 'en-GB')
@@ -28,6 +28,7 @@ registerLocaleData(localeEnGB, 'en-GB')
     AboutComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
