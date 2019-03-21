@@ -5,16 +5,19 @@
   background-color: transparent;
   text-align: center;
 
-  .mat-expansion-panel-header[aria-disabled=true] {
-    color: $dark-primary-text;
-  }
+  .mat-expansion-panel-header {
+    &[aria-expanded=false]:hover {
+      background: transparent;
+      cursor: default;
+    }
 
-  .mat-expansion-panel-header[aria-disabled=false] {
-    display: inline-flex;
-    height: 64px;
+    &[aria-expanded=true] {
+      display: inline-flex;
+      height: 64px;
 
-    &:hover {
-      background: rgba(0,0,0,.04);
+      &:hover, &:focus {
+        background: rgba(0,0,0,.04);
+      }
     }
   }
 

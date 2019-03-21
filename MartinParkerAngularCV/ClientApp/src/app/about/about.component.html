@@ -1,7 +1,7 @@
 <h1>
   {{translations?.title}}
 </h1>
-<mat-expansion-panel #aboutPanel [hideToggle]="!showAbout" [expanded]="showAbout" (closed)="hideAbout()" [disabled]="!showAbout">
+<mat-expansion-panel #aboutPanel [hideToggle]="!showAbout" [expanded]="showAbout" (closed)="hideAbout()" (opened)="openAbout()">
   <mat-expansion-panel-header>
     <mat-panel-title>
       <ng-container *ngIf="showAbout">{{translations?.hide}}</ng-container>
