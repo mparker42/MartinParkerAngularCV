@@ -1,0 +1,57 @@
+<h1>
+  {{translations?.title}}
+</h1>
+
+<div>
+  <mat-tab-group>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="portfolioTitleIcon">help</mat-icon>
+        &nbsp;
+        {{translations?.tabTitleHelp}}
+      </ng-template>
+      <h2>Using the portfolio browser</h2>
+      <p>Each tile in the collection below represents a completed project.</p>
+      <p>A tile has a download button and a more details button.</p>
+      <p>To be written on completion of the tiles feature...</p>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="portfolioTitleIcon">info</mat-icon>
+        &nbsp;
+        {{translations?.tabTitleClarification}}
+      </ng-template>
+      <h1>Some more tab content</h1>
+      <p>...</p>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="portfolioTitleIcon">view_quilt</mat-icon>
+        &nbsp;
+        {{translations?.tabTitleViews}}
+      </ng-template>
+      <h1>Some more tab content</h1>
+      <p>...</p>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="portfolioTitleIcon">filter_list</mat-icon>
+        &nbsp;
+        {{translations?.tabTitleFilter}}
+      </ng-template>
+      <h1>Some more tab content</h1>
+      <p>...</p>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="portfolioTitleIcon">search</mat-icon>
+        &nbsp;
+        {{translations?.tabTitleSearch}}
+      </ng-template>
+      <h1>Some more tab content</h1>
+      <p>...</p>
+    </mat-tab>
+  </mat-tab-group>
+
+
+</div>

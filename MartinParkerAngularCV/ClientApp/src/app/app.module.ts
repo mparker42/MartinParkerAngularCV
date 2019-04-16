@@ -11,12 +11,14 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavigationMenuComponent } from './navigation-menu/navigation-menu.component';
 import { AboutComponent } from "./about/about.component";
+import { PortfolioComponent } from "./portfolio/portfolio.component";
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 import { APIRequestService } from './services/api-request-service';
 import { TranslationsService } from './services/translation-service';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTabsModule } from '@angular/material/tabs';
 
 registerLocaleData(localeEnGB, 'en-GB')
 
@@ -25,7 +27,8 @@ registerLocaleData(localeEnGB, 'en-GB')
     AppComponent,
     HomeComponent,
     NavigationMenuComponent,
-    AboutComponent
+    AboutComponent,
+    PortfolioComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +45,8 @@ registerLocaleData(localeEnGB, 'en-GB')
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatTabsModule
   ],
   providers: [
     APIRequestService,
