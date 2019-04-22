@@ -19,6 +19,8 @@ import { TranslationsService } from './services/translation-service';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatCardModule } from '@angular/material/card';
 
 registerLocaleData(localeEnGB, 'en-GB')
 
@@ -46,7 +48,9 @@ registerLocaleData(localeEnGB, 'en-GB')
     MatIconModule,
     MatListModule,
     MatExpansionModule,
-    MatTabsModule
+    MatTabsModule,
+    MatPaginatorModule,
+    MatCardModule
   ],
   providers: [
     APIRequestService,
