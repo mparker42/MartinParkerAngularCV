@@ -17,6 +17,9 @@ namespace TranslationsUpload
 {
     class Program
     {
+        private class 
+
+
         static async Task Main(string[] args)
         {
             Console.WriteLine("Resolving translations");
@@ -76,6 +79,16 @@ namespace TranslationsUpload
                     }
                 }
             }
+
+            Console.WriteLine("Resolving tile definitions");
+
+            string tileDefinitions = Path.Combine(rootPath, "Upload", "DataFiles", "V1"),
+                unresolvedTileDefinitions = Path.Combine(tileDefinitions, "TileDefinition.json"),
+                resolvedTileDefinitionsUploadPath = Path.Combine(tileDefinitions, "TileSearch.json");
+
+            Dictionary<string, Dictionary<string, string>> fallbackTranslations = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(File.ReadAllText(Path.Combine(unresolvedTranslationPath, "en.json")));
+
+
 
             Console.WriteLine("Putting all the files into blob");
 

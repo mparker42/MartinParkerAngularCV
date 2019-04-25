@@ -4,34 +4,31 @@
       "titleTranslation": "gameDevelopmentTitle",
       "descriptionTranslation": "gameDevelopmentDescription",
       "link": "https://martinparkercvfiles.blob.core.windows.net/projects/GameDev.zip",
+      "searchCriteriaTranslation": "gameDevelopmentSearchCriteria",
       "tags": [
         {
-          "type": "Language",
-          "value": "C++"
+          "name": "Language",
+          "selectValue": "C++"
         },
         {
-          "type": "Package",
-          "value": "Unreal Engine"
+          "name": "Package",
+          "selectValue": "UnrealEngine"
         },
         {
-          "type": "ProjectStartDate",
-          "value": "2016-01-15"
+          "name": "ProjectStartDate",
+          "dateValue": "2016-01-15"
         },
         {
-          "type": "ProjectEndDate",
-          "value": "2016-04-20"
+          "name": "ProjectEndDate",
+          "dateValue": "2016-04-20"
         },
         {
-          "type": "UniversityWork",
-          "value": true
+          "name": "UniversityWork",
+          "booleanValue": true
         },
         {
-          "type": "UniversityYear",
-          "value": "Year 4"
-        },
-        {
-          "type": "ProjectName",
-          "value": "game development devlopment devlpment devlpmnt dvlpmnt"
+          "name": "UniversityYear",
+          "selectValue": "Year4"
         }
       ]
     },
@@ -39,30 +36,27 @@
       "titleTranslation": "programming1Title",
       "descriptionTranslation": "programming1Description",
       "link": "https://martinparkercvfiles.blob.core.windows.net/projects/Programming%201.zip",
+      "searchCriteriaTranslation": "programming1SearchCriteria",
       "tags": [
         {
-          "type": "Language",
-          "value": "C#"
+          "name": "Language",
+          "selectValue": "C#"
         },
         {
-          "type": "ProjectStartDate",
-          "value": "2012-09-25"
+          "name": "ProjectStartDate",
+          "dateValue": "2012-09-25"
         },
         {
-          "type": "ProjectEndDate",
-          "value": "2012-12-20"
+          "name": "ProjectEndDate",
+          "dateValue": "2012-12-20"
         },
         {
-          "type": "UniversityWork",
-          "value": true
+          "name": "UniversityWork",
+          "booleanValue": true
         },
         {
-          "type": "UniversityYear",
-          "value": "Year 1"
-        },
-        {
-          "type": "ProjectName",
-          "value": "programming 1 programming one prog 1 prog one prg programing"
+          "name": "UniversityYear",
+          "selectValue": "Year1"
         }
       ]
     },
@@ -70,34 +64,31 @@
       "titleTranslation": "programming2Title",
       "descriptionTranslation": "programming2Description",
       "link": "https://martinparkercvfiles.blob.core.windows.net/projects/Programming%202%20Assessment.zip",
+      "searchCriteriaTranslation": "programming2SearchCriteria",
       "tags": [
         {
-          "type": "Language",
-          "value": "C#"
+          "name": "Language",
+          "selectValue": "C#"
         },
         {
-          "type": "Package",
-          "value": "XNA"
+          "name": "Package",
+          "selectValue": "XNA"
         },
         {
-          "type": "ProjectStartDate",
-          "value": "2013-01-15"
+          "name": "ProjectStartDate",
+          "dateValue": "2013-01-15"
         },
         {
-          "type": "ProjectEndDate",
-          "value": "2013-04-20"
+          "name": "ProjectEndDate",
+          "dateValue": "2013-04-20"
         },
         {
-          "type": "UniversityWork",
-          "value": true
+          "name": "UniversityWork",
+          "booleanValue": true
         },
         {
-          "type": "UniversityYear",
-          "value": "Year 1"
-        },
-        {
-          "type": "ProjectName",
-          "value": "programming 2 programming two prog 2 prog two prg programing"
+          "name": "UniversityYear",
+          "selectValue": "Year1"
         }
       ]
     },
@@ -105,26 +96,27 @@
       "titleTranslation": "hangmanTitle",
       "descriptionTranslation": "hangmanDescription",
       "link": "https://martinparkercvfiles.blob.core.windows.net/projects/Hangman%20Windows.zip",
+      "searchCriteriaTranslation": "hangmanSearchCriteria",
       "tags": [
         {
-          "type": "Language",
-          "value": "C#"
+          "name": "Language",
+          "selectValue": "C#"
         },
         {
-          "type": "Package",
-          "value": "XNA"
+          "name": "Package",
+          "selectValue": "XNA"
         },
         {
-          "type": "ProjectStartDate",
-          "value": "2012-12-08"
+          "name": "ProjectStartDate",
+          "dateValue": "2012-12-08"
         },
         {
-          "type": "ProjectEndDate",
-          "value": "2012-12-30"
+          "name": "ProjectEndDate",
+          "dateValue": "2012-12-30"
         },
         {
-          "type": "ProjectName",
-          "value": "hangman hngman hngmn hnmn hmn"
+          "name": "UniversityWork",
+          "booleanValue": false
         }
       ]
     },
@@ -132,34 +124,31 @@
       "titleTranslation": "databasesTitle",
       "descriptionTranslation": "databasesDescription",
       "link": "https://martinparkercvfiles.blob.core.windows.net/projects/MP%20Databases%20Assesment.zip",
+      "searchCriteriaTranslation": "databasesSearchCriteria",
       "tags": [
         {
-          "type": "Language",
-          "value": "MySQL"
+          "name": "Language",
+          "selectValue": "MySQL"
         },
         {
-          "type": "Language",
-          "value": "SQL"
+          "name": "Language",
+          "selectValue": "SQL"
         },
         {
-          "type": "ProjectStartDate",
-          "value": "2013-09-25"
+          "name": "ProjectStartDate",
+          "dateValue": "2013-09-25"
         },
         {
-          "type": "ProjectEndDate",
-          "value": "2013-12-20"
+          "name": "ProjectEndDate",
+          "dateValue": "2013-12-20"
         },
         {
-          "type": "UniversityWork",
-          "value": true
+          "name": "UniversityWork",
+          "booleanValue": true
         },
         {
-          "type": "UniversityYear",
-          "value": "Year 2"
-        },
-        {
-          "type": "ProjectName",
-          "value": "databases mysql"
+          "name": "UniversityYear",
+          "selectValue": "Year2"
         }
       ]
     },
@@ -167,34 +156,31 @@
       "titleTranslation": "graphics1Title",
       "descriptionTranslation": "graphics1Description",
       "link": "https://martinparkercvfiles.blob.core.windows.net/projects/Graphics%201.zip",
+      "searchCriteriaTranslation": "graphics1SearchCriteria",
       "tags": [
         {
-          "type": "Language",
-          "value": "C++"
+          "name": "Language",
+          "selectValue": "C++"
         },
         {
-          "type": "Package",
-          "value": "OpenGL"
+          "name": "Package",
+          "selectValue": "OpenGL"
         },
         {
-          "type": "ProjectStartDate",
-          "value": "2013-09-25"
+          "name": "ProjectStartDate",
+          "dateValue": "2013-09-25"
         },
         {
-          "type": "ProjectEndDate",
-          "value": "2013-12-20"
+          "name": "ProjectEndDate",
+          "dateValue": "2013-12-20"
         },
         {
-          "type": "UniversityWork",
-          "value": true
+          "name": "UniversityWork",
+          "booleanValue": true
         },
         {
-          "type": "UniversityYear",
-          "value": "Year 2"
-        },
-        {
-          "type": "ProjectName",
-          "value": "graphics 1 i grphics grphcs graphcs"
+          "name": "UniversityYear",
+          "selectValue": "Year2"
         }
       ]
     },
@@ -202,30 +188,27 @@
       "titleTranslation": "networksAndSecurityTitle",
       "descriptionTranslation": "networksAndSecurityDescription",
       "link": "https://martinparkercvfiles.blob.core.windows.net/projects/Networks%20and%20Security.zip",
+      "searchCriteriaTranslation": "networksAndSecuritySearchCriteria",
       "tags": [
         {
-          "type": "Language",
-          "value": "Python"
+          "name": "Language",
+          "selectValue": "Python"
         },
         {
-          "type": "ProjectStartDate",
-          "value": "2013-09-25"
+          "name": "ProjectStartDate",
+          "dateValue": "2013-09-25"
         },
         {
-          "type": "ProjectEndDate",
-          "value": "2013-12-20"
+          "name": "ProjectEndDate",
+          "dateValue": "2013-12-20"
         },
         {
-          "type": "UniversityWork",
-          "value": true
+          "name": "UniversityWork",
+          "booleanValue": true
         },
         {
-          "type": "UniversityYear",
-          "value": "Year 2"
-        },
-        {
-          "type": "ProjectName",
-          "value": "networks ntworks netwrks ntwrks and n & nd + security scurity scrity scrty scurty secrity secrty securty"
+          "name": "UniversityYear",
+          "selectValue": "Year2"
         }
       ]
     },
@@ -233,34 +216,31 @@
       "titleTranslation": "graphics2Title",
       "descriptionTranslation": "graphics2Description",
       "link": "https://martinparkercvfiles.blob.core.windows.net/projects/Graphics%202.zip",
+      "searchCriteriaTranslation": "graphics2SearchCriteria",
       "tags": [
         {
-          "type": "Language",
-          "value": "C++"
+          "name": "Language",
+          "selectValue": "C++"
         },
         {
-          "type": "Package",
-          "value": "OpenGL"
+          "name": "Package",
+          "selectValue": "OpenGL"
         },
         {
-          "type": "ProjectStartDate",
-          "value": "2014-01-15"
+          "name": "ProjectStartDate",
+          "dateValue": "2014-01-15"
         },
         {
-          "type": "ProjectEndDate",
-          "value": "2014-04-20"
+          "name": "ProjectEndDate",
+          "dateValue": "2014-04-20"
         },
         {
-          "type": "UniversityWork",
-          "value": true
+          "name": "UniversityWork",
+          "booleanValue": true
         },
         {
-          "type": "UniversityYear",
-          "value": "Year 2"
-        },
-        {
-          "type": "ProjectName",
-          "value": "graphics 2 ii grphics grphcs graphcs"
+          "name": "UniversityYear",
+          "selectValue": "Year2"
         }
       ]
     },
@@ -268,38 +248,35 @@
       "titleTranslation": "applicationDevelopmentTitle",
       "descriptionTranslation": "applicationDevelopmentDescription",
       "link": "https://martinparkercvfiles.blob.core.windows.net/projects/MMOPAV2.zip",
+      "searchCriteriaTranslation": "applicationDevelopmentSearchCriteria",
       "tags": [
         {
-          "type": "Language",
-          "value": "C#"
+          "name": "Language",
+          "selectValue": "C#"
         },
         {
-          "type": "Language",
-          "value": "JavaScript"
+          "name": "Language",
+          "selectValue": "JavaScript"
         },
         {
-          "type": "Package",
-          "value": "WebGL"
+          "name": "Package",
+          "selectValue": "WebGL"
         },
         {
-          "type": "ProjectStartDate",
-          "value": "2014-01-15"
+          "name": "ProjectStartDate",
+          "dateValue": "2014-01-15"
         },
         {
-          "type": "ProjectEndDate",
-          "value": "2014-04-20"
+          "name": "ProjectEndDate",
+          "dateValue": "2014-04-20"
         },
         {
-          "type": "UniversityWork",
-          "value": true
+          "name": "UniversityWork",
+          "booleanValue": true
         },
         {
-          "type": "UniversityYear",
-          "value": "Year 2"
-        },
-        {
-          "type": "ProjectName",
-          "value": "application development applcation devlopment applction devlpment applcton devlpmnt applctn dvlpmnt"
+          "name": "UniversityYear",
+          "selectValue": "Year2"
         }
       ]
     },
@@ -307,30 +284,27 @@
       "titleTranslation": "teamProjectTitle",
       "descriptionTranslation": "teamProjectDescription",
       "link": "https://chrome.google.com/webstore/detail/fluffypuffin-file-encrypt/klbknjbjhpikjddjfbmlmmpnhngonljp",
+      "searchCriteriaTranslation": "teamProjectSearchCriteria",
       "tags": [
         {
-          "type": "Language",
-          "value": "JavaScript"
+          "name": "Language",
+          "selectValue": "JavaScript"
         },
         {
-          "type": "ProjectStartDate",
-          "value": "2014-01-15"
+          "name": "ProjectStartDate",
+          "dateValue": "2014-01-15"
         },
         {
-          "type": "ProjectEndDate",
-          "value": "2014-04-20"
+          "name": "ProjectEndDate",
+          "dateValue": "2014-04-20"
         },
         {
-          "type": "UniversityWork",
-          "value": true
+          "name": "UniversityWork",
+          "booleanValue": true
         },
         {
-          "type": "UniversityYear",
-          "value": "Year 2"
-        },
-        {
-          "type": "ProjectName",
-          "value": "team project tem tam tm prject projct prjct"
+          "name": "UniversityYear",
+          "selectValue": "Year2"
         }
       ]
     },
@@ -338,30 +312,27 @@
       "titleTranslation": "systemsProgrammingTitle",
       "descriptionTranslation": "systemsProgrammingDescription",
       "link": "https://martinparkercvfiles.blob.core.windows.net/projects/SystemsProg.zip",
+      "searchCriteriaTranslation": "systemsProgrammingSearchCriteria",
       "tags": [
         {
-          "type": "Language",
-          "value": "C++"
+          "name": "Language",
+          "selectValue": "C++"
         },
         {
-          "type": "ProjectStartDate",
-          "value": "2015-09-25"
+          "name": "ProjectStartDate",
+          "dateValue": "2015-09-25"
         },
         {
-          "type": "ProjectEndDate",
-          "value": "2015-12-20"
+          "name": "ProjectEndDate",
+          "dateValue": "2015-12-20"
         },
         {
-          "type": "UniversityWork",
-          "value": true
+          "name": "UniversityWork",
+          "booleanValue": true
         },
         {
-          "type": "UniversityYear",
-          "value": "Year 4"
-        },
-        {
-          "type": "ProjectName",
-          "value": "systems systms programming prg programing"
+          "name": "UniversityYear",
+          "selectValue": "Year4"
         }
       ]
     },
@@ -369,34 +340,31 @@
       "titleTranslation": "gameBehaviourTitle",
       "descriptionTranslation": "gameBehaviourDescription",
       "link": "https://martinparkercvfiles.blob.core.windows.net/projects/GB%20Submission.zip",
+      "searchCriteriaTranslation": "gameBehaviourSearchCriteria",
       "tags": [
         {
-          "type": "Language",
-          "value": "C#"
+          "name": "Language",
+          "selectValue": "C#"
         },
         {
-          "type": "Package",
-          "value": "Mono Game"
+          "name": "Package",
+          "selectValue": "MonoGame"
         },
         {
-          "type": "ProjectStartDate",
-          "value": "2015-09-25"
+          "name": "ProjectStartDate",
+          "dateValue": "2015-09-25"
         },
         {
-          "type": "ProjectEndDate",
-          "value": "2015-12-20"
+          "name": "ProjectEndDate",
+          "dateValue": "2015-12-20"
         },
         {
-          "type": "UniversityWork",
-          "value": true
+          "name": "UniversityWork",
+          "booleanValue": true
         },
         {
-          "type": "UniversityYear",
-          "value": "Year 4"
-        },
-        {
-          "type": "ProjectName",
-          "value": "game behaviour"
+          "name": "UniversityYear",
+          "selectValue": "Year4"
         }
       ]
     },
@@ -404,30 +372,27 @@
       "titleTranslation": "independentStudiesTitle",
       "descriptionTranslation": "independentStudiesDescription",
       "link": "https://martinparkercvfiles.blob.core.windows.net/projects/MP%20-%20Dis%20Sub.zip",
+      "searchCriteriaTranslation": "independentStudiesSearchCriteria",
       "tags": [
         {
-          "type": "Language",
-          "value": "Java"
+          "name": "Language",
+          "selectValue": "Java"
         },
         {
-          "type": "ProjectStartDate",
-          "value": "2015-09-25"
+          "name": "ProjectStartDate",
+          "dateValue": "2015-09-25"
         },
         {
-          "type": "ProjectEndDate",
-          "value": "2016-04-20"
+          "name": "ProjectEndDate",
+          "dateValue": "2016-04-20"
         },
         {
-          "type": "UniversityWork",
-          "value": true
+          "name": "UniversityWork",
+          "booleanValue": true
         },
         {
-          "type": "UniversityYear",
-          "value": "Year 4"
-        },
-        {
-          "type": "ProjectName",
-          "value": "independent studies indi indy std dissertations"
+          "name": "UniversityYear",
+          "selectValue": "Year4"
         }
       ]
     }
