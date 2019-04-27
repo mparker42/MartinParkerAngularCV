@@ -77,6 +77,26 @@
     "independentStudiesImageAltText": "A screen cap of a phone running the independent studies game. It shows a menu for purchasing items and behind that a map of existing reseources.",
     "programming2ImageAltText": "A screen cap of the programming 2 application. It shows a city scene with a building on the left of the screen and a crosswalk on the right of the screen.",
     "teamProjectImageAltText": "Instructions for how to use the browser extension created as part of the team project module. The steps are as follows: 1. Click the icon in the top right of the browser with a puffin icon. 2. Click \"Open encryption page\". 3. Click \"Browse files\". 4. Select a file. 5. Enter the Password. 6. Click \"Decrypt\"",
-    "tagLanguageTitleTranslation": "Language"
+    "tagLanguageTitleTranslation": "Language",
+    "tagLanguageValueC++Translation": "C++",
+    "tagLanguageValueC#Translation": "C#",
+    "tagLanguageValueMySQLTranslation": "MySQL",
+    "tagLanguageValueSQLTranslation": "SQL",
+    "tagLanguageValuePythonTranslation": "Python",
+    "tagLanguageValueJavaScriptTranslation": "JavaScript",
+    "tagLanguageValueJavaTranslation": "Java",
+    "tagPackageTitleTranslation": "Package",
+    "tagPackageValueUnrealEngineTranslation": "Unreal Engine",
+    "tagPackageValueXNATranslation": "XNA",
+    "tagPackageValueOpenGLTranslation": "OpenGL",
+    "tagPackageValueWebGLTranslation": "WebGL",
+    "tagPackageValueMonoGameTranslation": "Mono Game",
+    "tagUniversityYearTitleTranslation": "University Year",
+    "tagUniversityYearValueYear4Translation": "Year 4",
+    "tagUniversityYearValueYear1Translation": "Year 1",
+    "tagUniversityYearValueYear2Translation": "Year 2",
+    "tagProjectStartDateTitleTranslation": "Project Start Date",
+    "tagProjectEndDateTitleTranslation": "Project End Date",
+    "tagUniversityWorkTitleTranslation": "University Work"
   }
 }
