@@ -7,6 +7,7 @@ namespace MartinParkerAngularCV.SharedUtils.Models.Configuration
 {
     public class BlobStoreConfiguration
     {
-        public string StoreSecretURL { get; set; }
+        public string InternalStoreSecretURL { get; set; }
+        public string PublicStoreSecretURL { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using MartinParkerAngularCV.SharedUtils;
 using MartinParkerAngularCV.SharedUtils.Constants;
+using MartinParkerAngularCV.SharedUtils.Enums;
 using Microsoft.Extensions.Caching.Distributed;
 using Newtonsoft.Json;
 using System;
@@ -41,7 +42,7 @@ namespace MartinParkerAngularCV.Utils
 
         internal async Task<Dictionary<string, string>> AddTranslationsPackageIntoCache(string packageName)
         {
-            string translations = await BlobStoreHelper.GetBlobAsString(_blobPrefix + packageName);
+            string translations = await BlobStoreHelper.GetBlobAsString(_blobPrefix + packageName, BlobContainerType.Internal);
 
             DistributedCache.Set(TranslationConstants._cachePrefix + packageName, Encoding.UTF8.GetBytes(translations));
 

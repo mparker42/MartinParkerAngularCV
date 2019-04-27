@@ -1,4 +1,5 @@
-﻿using MartinParkerAngularCV.SharedUtils.Models.Configuration;
+﻿using MartinParkerAngularCV.SharedUtils.Enums;
+using MartinParkerAngularCV.SharedUtils.Models.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
@@ -26,12 +27,25 @@ namespace MartinParkerAngularCV.SharedUtils
         private CloudBlobContainer _cachedCoreContainer;
         private DateTimeOffset _cachedCoreContainerExpiry = DateTimeOffset.Now;
 
-        private async Task<CloudBlobContainer> GetCoreContainer()
+        private string GetContainerSecretURL(BlobContainerType containerType)
+        {
+            switch (containerType)
+            {
+                case BlobContainerType.Public:
+                    return Config.PublicStoreSecretURL;
+                case BlobContainerType.Internal:
+                    return Config.InternalStoreSecretURL;
+                default:
+                    throw new ArgumentOutOfRangeException("No known secret url to get the container type connection string");
+            }
+        }
+
+        private async Task<CloudBlobContainer> GetContainer(BlobContainerType containerType)
         {
             if(_cachedCoreContainer != null && DateTimeOffset.Now > _cachedCoreContainerExpiry)
                 return _cachedCoreContainer;
 
-            string storageConnectionString = await KeyVaultHelper.GetSecret(Config.StoreSecretURL);
+            string storageConnectionString = await KeyVaultHelper.GetSecret(GetContainerSecretURL(containerType));
 
             CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnectionString);
 
@@ -43,18 +57,18 @@ namespace MartinParkerAngularCV.SharedUtils
             return _cachedCoreContainer;
         }
 
-        public async Task<string> GetBlobAsString(string path)
+        public async Task<string> GetBlobAsString(string path, BlobContainerType containerType)
         {
-            CloudBlobContainer coreContainer = await GetCoreContainer();
+            CloudBlobContainer coreContainer = await GetContainer(containerType);
 
             CloudBlockBlob blob = coreContainer.GetBlockBlobReference(path);
 
             return await blob.DownloadTextAsync();
         }
 
-        public async Task UploadFolderToBlob(string path)
+        public async Task UploadFolderToBlob(string path, BlobContainerType containerType)
         {
-            CloudBlobContainer coreContainer = await GetCoreContainer();
+            CloudBlobContainer coreContainer = await GetContainer(containerType);
 
             IEnumerable<string> files = Directory.EnumerateFiles(path, "*", new EnumerationOptions() { RecurseSubdirectories = true });
 

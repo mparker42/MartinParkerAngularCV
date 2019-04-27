@@ -23,7 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Upload\Translations\" />
+    <Folder Include="Upload\Public\Images\" />
+    <Folder Include="Upload\Internal\Translations\" />
+    <Folder Include="Upload\Public\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,5 +41,9 @@
       <HintPath>..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.dependencyinjection\2.2.0\lib\netcoreapp2.0\Microsoft.Extensions.DependencyInjection.dll</HintPath>
     </Reference>
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="XCOPY &quot;$(ProjectDir)Upload&quot; &quot;$(TargetDir)Upload&quot; /E /Y&#xD;&#xA;XCOPY &quot;$(ProjectDir)UnResolvedTranslations&quot; &quot;$(TargetDir)UnResolvedTranslations&quot; /E /Y" />
+  </Target>
 
 </Project>

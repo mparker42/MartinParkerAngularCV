@@ -65,6 +65,18 @@
     "gameBehaviourSearchCriteria": "game behaviour",
     "independentStudiesTitle": "Independent Studies",
     "independentStudiesDescription": "Independent Studies is the module name for the dissertation in my BSc.<br>For my dissertation I decided to see if a free-to-play game could use positive actions for currency.<br>The produced game was put on the google play store under the name EnergyRace and has since been removed.",
-    "independentStudiesSearchCriteria": "independent studies indi indy std dissertations"
+    "independentStudiesSearchCriteria": "independent studies indi indy std dissertations",
+    "applicationDevelopmentImageAltText": "A screen capture of a browser running the Application Development web application.",
+    "consoleImageAltText": "A rendering of a computer monitor with a console running.",
+    "databaseImageAltText": "A simple graphic representing a database.",
+    "gameBehaviourImageAltText": "A screen cap of the game behaviour application with the debug mode turned on. It shows an AI stick person navigating a series of platforms.",
+    "gameDevelopmentImageAltText": "A screen cap from the world developed for the Game Development module. It shows corridors of jusk on a mars like planet.",
+    "graphics1ImageAltText": "A screen cap of a window running the graphics 1 program. It shows a 2D desktop. On the desktop are layered images of a cat picture and a grassy hill. The pictures have an alpha transparency applied allow visibility of layering.",
+    "graphics2ImageAltText": "A screen cap of a window running the graphics 2 program. It shows some 3D models floading above a textured ground model.",
+    "hangmanImageAltText": "A graphic from the hangman game. It shows a fully completed hangman on the right. A collection of characters in the top left and the word grid in the bottom left. The background mimics lined school paper.",
+    "independentStudiesImageAltText": "A screen cap of a phone running the independent studies game. It shows a menu for purchasing items and behind that a map of existing reseources.",
+    "programming2ImageAltText": "A screen cap of the programming 2 application. It shows a city scene with a building on the left of the screen and a crosswalk on the right of the screen.",
+    "teamProjectImageAltText": "Instructions for how to use the browser extension created as part of the team project module. The steps are as follows: 1. Click the icon in the top right of the browser with a puffin icon. 2. Click \"Open encryption page\". 3. Click \"Browse files\". 4. Select a file. 5. Enter the Password. 6. Click \"Decrypt\"",
+    "tagLanguageTitleTranslation": "Language"
   }
 }
