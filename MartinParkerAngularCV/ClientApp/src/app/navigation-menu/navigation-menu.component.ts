@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { TranslationsService } from '../services/translation-service';
+import { DOCUMENT } from '@angular/platform-browser';
 
 @Component({
   selector: 'navigation-menu',
@@ -20,7 +21,7 @@ export class NavigationMenuComponent {
 
   translations: object;
 
-  constructor(private breakpointObserver: BreakpointObserver, private translationService: TranslationsService) {
+  constructor(private breakpointObserver: BreakpointObserver, private translationService: TranslationsService, @Inject(DOCUMENT) private document) {
     this.translationService.getTranslations('Navigation').subscribe(result => {
       this.translations = result;
     });
