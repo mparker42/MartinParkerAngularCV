@@ -53,19 +53,16 @@
     </mat-tab>
   </mat-tab-group>
 
-  <mat-paginator [length]="100"
-                 [pageSize]="10"
-                 [pageSizeOptions]="[5, 10, 25, 100]">
-  </mat-paginator>
-
-  <div *ngIf="portfolio != null && translations != null">
+  <div *ngIf="portfolio != null && translations != null" class="portfolioTiles" cols="4" gutterSize="1em" rowHeight="fit">
     <mat-card class="example-card" *ngFor="let tile of portfolio.tiles">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title>{{translations[tile.titleTranslation]}}</mat-card-title>
         <mat-card-subtitle>Temp</mat-card-subtitle>
       </mat-card-header>
-      <img mat-card-image src="{{tile.imageURL}}" alt="{{translations[tile.imageAltTextTranslation]}}">
+      <div mat-card-image>
+        <img src="{{tile.imageURL}}" alt="{{translations[tile.imageAltTextTranslation]}}">
+      </div>
       <mat-card-content>
         <p>
         </p>
@@ -76,9 +73,4 @@
       </mat-card-actions>
     </mat-card>
   </div>
-
-  <mat-paginator [length]="100"
-                 [pageSize]="10"
-                 [pageSizeOptions]="[5, 10, 25, 100]">
-  </mat-paginator>
 </div>
