@@ -1,0 +1,74 @@
+@media (max-width: 767px) {
+  /* On small screens, the nav menu spans the full width of the screen. Leave a space for it. */
+  .body-content {
+    padding-top: 50px;
+  }
+}
+
+.messageHost {
+  color: black;
+  float: left;
+  z-index: 99;
+  position: fixed;
+  width: 100%;
+  padding-top: 23px;
+  padding-bottom: 17px;
+  padding-left: 15px;
+  background-color: rgba(185, 222, 226, 0.88);
+
+  .txtCont {
+    float: left;
+    position: relative;
+
+    .mat-icon {
+      font-size: 3em;
+      padding-right: 0.2em;
+      width: auto;
+      height: auto;
+      cursor: default;
+    }
+
+    .innerTextCont {
+      display: inline-block;
+      cursor: default;
+
+      * {
+        cursor: default;
+      }
+
+      a {
+        cursor: pointer;
+      }
+    }
+
+    .inform {
+      float: left;
+      position: relative;
+      font-size: 4rem;
+      display: inline-block;
+      margin-right: 15px;
+      margin-bottom: 5px;
+      color: rgb(0, 155, 211);
+    }
+  }
+
+  .controls {
+    position: absolute;
+    float: right;
+    right: 15px;
+    margin-top: -13px;
+    padding: 7px;
+    cursor: pointer;
+  }
+
+  .hideStart {
+    float: right;
+    margin-right: 60px;
+    margin-top: 18px;
+    margin-bottom: -19px;
+
+    span, div, .fa {
+      cursor: pointer;
+    }
+  }
+}

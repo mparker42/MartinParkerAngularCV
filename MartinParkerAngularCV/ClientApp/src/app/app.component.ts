@@ -9,10 +9,20 @@ declare global {
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   translations: any;
+
+  showMessage: boolean;
+  dontShow: boolean;
+
+  closeMsg() {
+    if (this.dontShow)
+      localStorage.setItem("hideInformMessage", "true");
+
+    this.showMessage = false;
+  }
 
   constructor(private titleService: Title, private translationService: TranslationsService) {
     this.translationService.getTranslations('Core').subscribe(result => {
@@ -21,5 +31,8 @@ export class AppComponent {
       window.clearInterval(window.loadingTitle);
       this.titleService.setTitle(this.translations.pageTitle);
     });
+
+    this.showMessage = localStorage.getItem("hideInformMessage") != 'true';
+    this.dontShow = false;
   }
 }

@@ -1,1 +1,16 @@
+<div *ngIf="showMessage" class="messageHost static inform">
+  <div class="txtCont">
+    <mat-icon>info</mat-icon>
+    <div class="innerTextCont">
+      <b>Pardon my dust</b>
+      <br>This is an incomplete portfolio site and many elements are not functional or in a partially functional state.<br>You can track the development of this site <a href="https://github.com/mparker42/MartinParkerAngularCV">here</a>.
+    </div>
+  </div>
+  <div class="controls" (click)="closeMsg()">
+    <mat-icon>close</mat-icon>
+  </div>
+  <div class="hideStart">
+    <mat-checkbox [(ngModel)]="dontShow">Don't show this again</mat-checkbox>
+  </div>
+</div>
 <navigation-menu></navigation-menu>
