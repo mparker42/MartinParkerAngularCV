@@ -9,7 +9,7 @@ import { TranslationsService } from '../services/translation-service';
 
 export class AboutComponent {
 
-  translations: object;
+  translations: any;
   showAbout: boolean;
 
   toggleAbout() {

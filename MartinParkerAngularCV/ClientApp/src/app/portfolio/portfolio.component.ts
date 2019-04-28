@@ -10,8 +10,8 @@ import { IPortfolio } from '../interfaces/portfolio';
 })
 
 export class PortfolioComponent {
-  private translations: object;
-  private portfolio: IPortfolio = null;
+  translations: any;
+  portfolio: IPortfolio = null;
 
   constructor(private translationService: TranslationsService, private portfolioService: PortfolioService) {
     this.translationService.getTranslations('Portfolio').subscribe(result => {

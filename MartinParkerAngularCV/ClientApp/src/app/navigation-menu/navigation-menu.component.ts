@@ -19,7 +19,11 @@ export class NavigationMenuComponent {
 
   showSideNav: boolean;
 
-  translations: object;
+  translations: any;
+
+  scrollToTop() {
+    document.querySelector('.mat-sidenav-content').scroll({ top: 0 });
+  }
 
   constructor(private breakpointObserver: BreakpointObserver, private translationService: TranslationsService, @Inject(DOCUMENT) private document) {
     this.translationService.getTranslations('Navigation').subscribe(result => {

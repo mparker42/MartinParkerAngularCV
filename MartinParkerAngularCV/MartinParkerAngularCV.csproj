@@ -12,6 +12,7 @@
     <BuildServerSideRenderer>false</BuildServerSideRenderer>
     <ApplicationInsightsResourceId>/subscriptions/1637b45e-0ccd-4c2f-b02a-cd1fa010b776/resourcegroups/MartinParkerCV/providers/microsoft.insights/components/MartinParkerCVInsights</ApplicationInsightsResourceId>
     <ApplicationInsightsAnnotationResourceId>/subscriptions/1637b45e-0ccd-4c2f-b02a-cd1fa010b776/resourcegroups/MartinParkerCV/providers/microsoft.insights/components/MartinParkerCVInsights</ApplicationInsightsAnnotationResourceId>
+    <UserSecretsId>5e52cc5f-5fe8-4f27-bf29-3aa305e6af0a</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -44,8 +45,6 @@
     <None Remove="ClientApp\src\app\interfaces\configuration.ts" />
     <None Remove="ClientApp\src\app\interfaces\portfolio.ts" />
     <None Remove="ClientApp\src\app\interfaces\search.ts" />
-    <None Remove="ClientApp\src\app\services\api-request-service.ts" />
-    <None Remove="ClientApp\src\app\services\translation-service.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -56,8 +55,6 @@
     <TypeScriptCompile Include="ClientApp\src\app\interfaces\configuration.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\interfaces\portfolio.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\interfaces\search.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\services\api-request-service.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\services\translation-service.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -90,5 +87,21 @@
       </ResolvedFileToPublish>
     </ItemGroup>
   </Target>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptTarget>ES2015</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptModuleKind>ES6</TypeScriptModuleKind>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
 
 </Project>

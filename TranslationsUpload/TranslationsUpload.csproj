@@ -1,5 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project Sdk="Microsoft.NET.Sdk;Microsoft.NET.Sdk.Publish">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -7,32 +6,26 @@
     <AssemblyName>MartinParkerAngularCV.TranslationsUpload</AssemblyName>
     <RootNamespace>MartinParkerAngularCV.TranslationsUpload</RootNamespace>
   </PropertyGroup>
-
   <ItemGroup>
     <None Remove="UnResolvedTranslations\en.json" />
   </ItemGroup>
-
   <ItemGroup>
     <Content Include="UnResolvedTranslations\en.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\SharedUtils\SharedUtils.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <Folder Include="Upload\Public\Images\" />
     <Folder Include="Upload\Internal\Translations\" />
     <Folder Include="Upload\Public\" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
   </ItemGroup>
-
   <ItemGroup>
     <Reference Include="Microsoft.Extensions.Configuration">
       <HintPath>..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.configuration\2.2.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
@@ -41,9 +34,12 @@
       <HintPath>..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.dependencyinjection\2.2.0\lib\netcoreapp2.0\Microsoft.Extensions.DependencyInjection.dll</HintPath>
     </Reference>
   </ItemGroup>
-
+  <ItemGroup>
+    <None Update="Settings.job">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="XCOPY &quot;$(ProjectDir)Upload&quot; &quot;$(TargetDir)Upload&quot; /E /Y&#xD;&#xA;XCOPY &quot;$(ProjectDir)UnResolvedTranslations&quot; &quot;$(TargetDir)UnResolvedTranslations&quot; /E /Y" />
   </Target>
-
 </Project>

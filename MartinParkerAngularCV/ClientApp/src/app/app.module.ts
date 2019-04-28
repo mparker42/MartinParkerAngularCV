@@ -16,6 +16,8 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 import { APIRequestService } from './services/api-request-service';
 import { TranslationsService } from './services/translation-service';
+import { PortfolioService } from './services/portfolio-service';
+import { PublicBlobFilesService } from './services/public-blob-files-service';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -57,6 +59,8 @@ registerLocaleData(localeEnGB, 'en-GB')
   providers: [
     APIRequestService,
     TranslationsService,
+    PortfolioService,
+    PublicBlobFilesService,
     { provide: LOCALE_ID, useValue: 'en-GB' }
   ],
   bootstrap: [AppComponent]

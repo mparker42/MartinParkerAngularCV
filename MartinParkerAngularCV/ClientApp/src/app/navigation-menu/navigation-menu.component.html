@@ -5,7 +5,7 @@
       [opened]="(isHandset | async) && showSideNav"
                (closed)="showSideNav = false"
                *ngIf="(isHandset | async)">
-    <mat-toolbar><a (click)="document.querySelector('.mat-sidenav-content').scroll({ top: 0 });">{{translations?.menu}}</a></mat-toolbar>
+    <mat-toolbar><a (click)="scrollToTop()">{{translations?.menu}}</a></mat-toolbar>
     <mat-nav-list>
       <a mat-list-item href="#about">{{translations?.about}}</a>
       <a mat-list-item href="#portfolio">{{translations?.portfolio}}</a>
@@ -22,7 +22,7 @@
         <mat-icon attr.aria-label="{{translations?.menuIconDescription}}">menu</mat-icon>
       </button>
       <mat-nav-list>
-        <a mat-list-item href="#" (click)="document.querySelector('.mat-sidenav-content').scroll({ top: 0 });">{{translations?.pageTitle}}</a>
+        <a mat-list-item href="#" (click)="scrollToTop()">{{translations?.pageTitle}}</a>
         <a mat-list-item href="#about" *ngIf="!(isHandset | async)">{{translations?.about}}</a>
         <a mat-list-item href="#portfolio" *ngIf="!(isHandset | async)">{{translations?.portfolio}}</a>
         <a mat-list-item href="#cv" *ngIf="!(isHandset | async)">{{translations?.cv}}</a>
