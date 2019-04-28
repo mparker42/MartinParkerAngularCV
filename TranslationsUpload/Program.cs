@@ -237,7 +237,7 @@ namespace TranslationsUpload
                 Options.Create(
                     new ServiceBusConfiguration()
                     {
-                        ServiceBusSecretURL = "martinparkercvserviceBusConnectionString"
+                        ServiceBusSecretURL = "serviceBusConnectionString"
                     }
                 ),
                 keyVaultHelper

@@ -10,4 +10,4 @@ var TranslationsService = /** @class */ (function () {
     return TranslationsService;
 }());
 exports.TranslationsService = TranslationsService;
-//# sourceMappingURL=translation-service.js.map
+//# sourceMappingURL=translation.service.js.map

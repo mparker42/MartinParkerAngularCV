@@ -3,6 +3,7 @@ using MartinParkerAngularCV.SharedUtils.Models.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.AspNetCore.StaticFiles;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -68,6 +69,9 @@ namespace MartinParkerAngularCV.SharedUtils
 
         public async Task UploadFolderToBlob(string path, BlobContainerType containerType)
         {
+            var provider = new FileExtensionContentTypeProvider();
+            string contentType;
+
             CloudBlobContainer coreContainer = await GetContainer(containerType);
 
             IEnumerable<string> files = Directory.EnumerateFiles(path, "*", new EnumerationOptions() { RecurseSubdirectories = true });
@@ -75,9 +79,19 @@ namespace MartinParkerAngularCV.SharedUtils
             int substringStart = path.Length;
 
             foreach (string file in files)
-                coreContainer
-                    .GetBlockBlobReference(file.Substring(substringStart).TrimStart('\\').Replace('\\', '/'))
-                    .UploadFromFile(file);
+            {
+                CloudBlockBlob blob = coreContainer
+                    .GetBlockBlobReference(file.Substring(substringStart).TrimStart('\\').Replace('\\', '/'));
+
+                if (!provider.TryGetContentType(file, out contentType))
+                {
+                    contentType = "application/octet-stream";
+                }
+
+                blob.Properties.ContentType = contentType;
+
+                blob.UploadFromFile(file);
+            }
         }
     }
 }

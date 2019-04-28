@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 // Make this a singleton for the locale resolution.
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class TranslationsService {
   private locale: string;

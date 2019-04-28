@@ -38,6 +38,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\interfaces\configuration.ts" />
+    <None Remove="ClientApp\src\app\interfaces\portfolio.ts" />
+    <None Remove="ClientApp\src\app\interfaces\search.ts" />
     <None Remove="ClientApp\src\app\services\api-request-service.ts" />
     <None Remove="ClientApp\src\app\services\translation-service.ts" />
   </ItemGroup>
@@ -47,6 +50,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\interfaces\configuration.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\interfaces\portfolio.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\interfaces\search.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\api-request-service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\translation-service.ts" />
   </ItemGroup>

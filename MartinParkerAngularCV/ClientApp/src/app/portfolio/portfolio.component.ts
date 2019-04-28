@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { TranslationsService } from '../services/translation-service';
+import { PortfolioService } from '../services/portfolio-service';
+import { IPortfolio } from '../interfaces/portfolio';
 
 @Component({
   selector: 'portfolio',
@@ -8,14 +10,16 @@ import { TranslationsService } from '../services/translation-service';
 })
 
 export class PortfolioComponent {
+  private translations: object;
+  private portfolio: IPortfolio = null;
 
-  translations: object;
-
-
-  constructor(private translationService: TranslationsService) {
+  constructor(private translationService: TranslationsService, private portfolioService: PortfolioService) {
     this.translationService.getTranslations('Portfolio').subscribe(result => {
       this.translations = result;
     });
 
+    this.portfolioService.getTileData().subscribe(result => {
+      this.portfolio = result;
+    });
   }
 }
