@@ -97,6 +97,8 @@
     "tagUniversityYearValueYear2Translation": "Year 2",
     "tagProjectStartDateTitleTranslation": "Project Start Date",
     "tagProjectEndDateTitleTranslation": "Project End Date",
-    "tagUniversityWorkTitleTranslation": "University Work"
+    "tagUniversityWorkTitleTranslation": "University Work",
+    "download": "Download",
+    "detail": "More detail"
   }
 }

@@ -58,7 +58,6 @@
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title>{{translations[tile.titleTranslation]}}</mat-card-title>
-        <mat-card-subtitle>Temp</mat-card-subtitle>
       </mat-card-header>
       <div mat-card-image>
         <img src="{{tile.imageURL}}" alt="{{translations[tile.imageAltTextTranslation]}}">
@@ -68,8 +67,8 @@
         </p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
+        <a mat-button href="{{tile.link}}" target="_blank">{{translations?.download}}</a>
+        <button mat-button>{{translations?.detail}}</button>
       </mat-card-actions>
     </mat-card>
   </div>
