@@ -5,3 +5,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 #contentWrapper { margin: 0 0.5em; }
 mat-toolbar a { cursor: pointer; }
+
+.mat-sidenav-container[class] .mat-sidenav-content[class] .mat-toolbar {
+  z-index: 2;
+}

@@ -15,6 +15,7 @@ export interface IPortfolioTile {
   imageURL: string;
   imageAltTextTranslation: string;
   tags: IPortfolioTag[];
+  expanded: boolean;
 }
 
 export interface IPortfolio {

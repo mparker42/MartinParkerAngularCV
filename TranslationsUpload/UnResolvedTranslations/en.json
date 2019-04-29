@@ -99,6 +99,7 @@
     "tagProjectEndDateTitleTranslation": "Project End Date",
     "tagUniversityWorkTitleTranslation": "University Work",
     "download": "Download",
-    "detail": "More detail"
+    "moreDetail": "More detail",
+    "lessDetail": "Less detail"
   }
 }

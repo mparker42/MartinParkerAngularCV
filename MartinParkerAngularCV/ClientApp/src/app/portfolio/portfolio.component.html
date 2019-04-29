@@ -53,8 +53,8 @@
     </mat-tab>
   </mat-tab-group>
 
-  <div *ngIf="portfolio != null && translations != null" class="portfolioTiles" cols="4" gutterSize="1em" rowHeight="fit">
-    <mat-card class="example-card" *ngFor="let tile of portfolio.tiles">
+  <div *ngIf="portfolio != null && translations != null" class="portfolioTiles">
+    <mat-card class="example-card mat-card {{tile.expanded ? 'expanded' : ''}}" *ngFor="let tile of portfolio.tiles">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title>{{translations[tile.titleTranslation]}}</mat-card-title>
@@ -63,12 +63,13 @@
         <img src="{{tile.imageURL}}" alt="{{translations[tile.imageAltTextTranslation]}}">
       </div>
       <mat-card-content>
-        <p>
+        <p [innerHTML]="translations[tile.descriptionTranslation]" *ngIf="tile.expanded">
         </p>
       </mat-card-content>
       <mat-card-actions>
         <a mat-button href="{{tile.link}}" target="_blank">{{translations?.download}}</a>
-        <button mat-button>{{translations?.detail}}</button>
+        <button mat-button *ngIf="!tile.expanded" (click)="tile.expanded = true">{{translations?.moreDetail}}</button>
+        <button mat-button *ngIf="tile.expanded" (click)="tile.expanded = false">{{translations?.lessDetail}}</button>
       </mat-card-actions>
     </mat-card>
   </div>
