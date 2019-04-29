@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { TranslationsService } from '../services/translation-service';
 import { PortfolioService } from '../services/portfolio-service';
 import { IPortfolio, IPortfolioTag } from '../interfaces/portfolio';
-import { forEach } from '@angular/router/src/utils/collection';
-import { open } from 'inspector';
 
 @Component({
   selector: 'portfolio',
