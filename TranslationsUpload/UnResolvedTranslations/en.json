@@ -100,6 +100,8 @@
     "tagUniversityWorkTitleTranslation": "University Work",
     "download": "Download",
     "moreDetail": "More detail",
-    "lessDetail": "Less detail"
+    "lessDetail": "Less detail",
+    "tagFormat": "{0}: {1}",
+    "notBooleanFormat": "Not {0}"
   }
 }

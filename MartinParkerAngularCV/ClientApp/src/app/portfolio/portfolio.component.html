@@ -60,16 +60,19 @@
         <mat-card-title>{{translations[tile.titleTranslation]}}</mat-card-title>
         <mat-card-subtitle *ngIf="getLanguageTag(tile.tags); let language">
           <mat-chip-list>
-            <mat-chip color="primary" [selectable]="false">{{translations[getTranslationForSelectOption(language)]}}</mat-chip>
+            <mat-chip [selectable]="false">{{translations[getTranslationForSelectOption(language)]}}</mat-chip>
           </mat-chip-list>
         </mat-card-subtitle>
       </mat-card-header>
       <div mat-card-image>
         <img src="{{tile.imageURL}}" alt="{{translations[tile.imageAltTextTranslation]}}">
       </div>
-      <mat-card-content>
-        <p [innerHTML]="translations[tile.descriptionTranslation]" *ngIf="tile.expanded">
+      <mat-card-content *ngIf="tile.expanded">
+        <p [innerHTML]="translations[tile.descriptionTranslation]">
         </p>
+        <mat-chip-list>
+          <mat-chip *ngFor="let tag of tile.tags" [selectable]="false">{{getTagChip(tag)}}</mat-chip>
+        </mat-chip-list>
       </mat-card-content>
       <mat-card-actions>
         <a mat-button href="{{tile.link}}" target="_blank">{{translations?.download}}</a>

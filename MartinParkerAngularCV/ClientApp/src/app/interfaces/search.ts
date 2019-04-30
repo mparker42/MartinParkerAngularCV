@@ -6,7 +6,8 @@ export interface ISelectFilterOption {
 export interface ISelectFilter {
   name: string;
   titleTranslation: string;
-  options: ISelectFilterOption[]
+  options: ISelectFilterOption[];
+  optionTranslations: any;
 }
 
 export interface IDateFilter {
@@ -23,6 +24,9 @@ export interface IBooleanFilter {
 
 export interface ISearch {
   selectFilters: ISelectFilter[],
+  selectFiltersByName: any,
   dateFilters: IDateFilter[],
-  booleanFilters: IBooleanFilter[]
+  dateFiltersByName: any,
+  booleanFilters: IBooleanFilter[],
+  booleanFiltersByName: any
 }

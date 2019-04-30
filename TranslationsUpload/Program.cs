@@ -46,6 +46,7 @@ namespace TranslationsUpload
             public string name { get; set; }
             public string titleTranslation { get; set; }
             public List<SelectFilterOption> options { get; set; }
+            public Dictionary<string, string> optionTranslations { get; set; }
         }
 
         private class DateFilter
@@ -158,11 +159,21 @@ namespace TranslationsUpload
                             options = new List<SelectFilterOption>
                             {
                                 currentOption
+                            },
+                            optionTranslations = new Dictionary<string, string>
+                            {
+                                {
+                                    currentOption.value,
+                                    currentOption.translation
+                                }
                             }
                         });
 
                     else if (!currentSelectFilter.options.Any(t => t.value == tag.selectValue))
+                    {
                         currentSelectFilter.options.Add(currentOption);
+                        currentSelectFilter.optionTranslations.Add(currentOption.value, currentOption.translation);
+                    }
                 }
                 else if (tag.dateValue.HasValue)
                 {
@@ -194,11 +205,19 @@ namespace TranslationsUpload
                 }
             }
 
+
+            Dictionary<string, SelectFilter> selectFiltersByName = new Dictionary<string, SelectFilter>();
+            Dictionary<string, DateFilter> dateFiltersByName = new Dictionary<string, DateFilter>();
+            Dictionary<string, BooleanFilter> booleanFiltersByName = new Dictionary<string, BooleanFilter>();
+
             File.WriteAllText(resolvedTileDefinitionsUploadPath, JsonConvert.SerializeObject(new
             {
                 selectFilters,
+                selectFiltersByName = selectFilters.ToDictionary(sf => sf.name, sf => sf),
                 dateFilters,
-                booleanFilters
+                dateFiltersByName = dateFilters.ToDictionary(sf => sf.name, sf => sf),
+                booleanFilters,
+                booleanFiltersByName = booleanFilters.ToDictionary(sf => sf.name, sf => sf)
             }));
 
             Console.WriteLine("Putting all the files into blob");

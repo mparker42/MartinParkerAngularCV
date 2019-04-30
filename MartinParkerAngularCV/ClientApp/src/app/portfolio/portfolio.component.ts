@@ -25,23 +25,31 @@ export class PortfolioComponent {
   }
 
   getTranslationForSelectOption(tag: IPortfolioTag) {
-    for (let i = 0; i < this.portfolio.search.selectFilters.length; i++) {
-      let filter = this.portfolio.search.selectFilters[i];
+    return this.portfolio.search.selectFiltersByName[tag.name].optionTranslations[tag.selectValue];
+  }
 
-      if (filter.name === tag.name) {
-        for (let j = 0; j < filter.options.length; j++) {
-          let option = filter.options[j];
+  getTagChip(tag: IPortfolioTag) {
+    let tagFormat = this.translations["tagFormat"];
 
-          if (option.value === tag.selectValue) {
-            return option.translation;
-          }
-        }
+    if (tag.selectValue !== undefined) {
+      let selectFilter = this.portfolio.search.selectFiltersByName[tag.name];
 
-        return null;
-      }
+      return tagFormat.replace(/\{0\}/gi, this.translations[selectFilter.titleTranslation]).replace(/\{1\}/gi, this.translations[selectFilter.optionTranslations[tag.selectValue]]);
     }
 
-    return null;
+    if (tag.dateValue !== undefined) {
+      let dateFilter = this.portfolio.search.dateFiltersByName[tag.name];
+
+      return tagFormat.replace(/\{0\}/gi, this.translations[dateFilter.titleTranslation]).replace(/\{1\}/gi, tag.dateValue);
+    }
+
+    let booleanFilter = this.portfolio.search.booleanFiltersByName[tag.name],
+      booleanTranslation = this.translations[booleanFilter.titleTranslation];
+
+    if (tag.booleanValue)
+      return booleanTranslation;
+
+    return this.translations['notBooleanFormat'].replace(/\{0\}/gi, booleanTranslation);
   }
 
   constructor(private translationService: TranslationsService, private portfolioService: PortfolioService) {
