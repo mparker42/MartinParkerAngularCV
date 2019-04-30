@@ -75,9 +75,9 @@
         </mat-chip-list>
       </mat-card-content>
       <mat-card-actions>
-        <a mat-button href="{{tile.link}}" target="_blank">{{translations?.download}}</a>
-        <button mat-button *ngIf="!tile.expanded" (click)="tile.expanded = true">{{translations?.moreDetail}}</button>
-        <button mat-button *ngIf="tile.expanded" (click)="tile.expanded = false">{{translations?.lessDetail}}</button>
+        <a mat-button href="{{tile.link}}" target="_blank"><mat-icon>save_alt</mat-icon> {{translations?.download}}</a>
+        <button mat-button *ngIf="!tile.expanded" (click)="tile.expanded = true"><mat-icon>expand_more</mat-icon> {{translations?.moreDetail}}</button>
+        <button mat-button *ngIf="tile.expanded" (click)="tile.expanded = false"><mat-icon>expand_less</mat-icon> {{translations?.lessDetail}}</button>
       </mat-card-actions>
     </mat-card>
   </div>
