@@ -12,6 +12,8 @@ using MartinParkerAngularCV.SharedUtils.Models.ServiceBus;
 using MartinParkerAngularCV.SharedUtils.Enums;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Http;
 
 namespace MartinParkerAngularCV
 {
@@ -26,13 +28,12 @@ namespace MartinParkerAngularCV
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);
-
             services.Configure<KeyVaultConfiguration>(Configuration.GetSection("KeyVault"));
             services.Configure<BlobStoreConfiguration>(Configuration.GetSection("BlobStore"));
             services.Configure<ServiceBusConfiguration>(Configuration.GetSection("ServiceBus"));
 
             services.AddMemoryCache();
+            services.AddDistributedMemoryCache();
 
             services.AddSingleton<KeyVaultHelper>()
                 .AddSingleton<BlobStoreHelper>()
@@ -44,9 +45,11 @@ namespace MartinParkerAngularCV
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddControllersWithViews();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ServiceBusHelper serviceBusHelper, IDistributedCache distributedCache)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ServiceBusHelper serviceBusHelper, IDistributedCache distributedCache)
         {
             app.UseRequestLocalization();
 
@@ -58,17 +61,22 @@ namespace MartinParkerAngularCV
             {
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
+                app.UseSpaStaticFiles();
             }
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseSpaStaticFiles();
 
-            app.UseMvc(routes =>
+            app.UseAuthorization();
+
+            app.UseRouting();
+
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute(
+                endpoints.MapControllers();
+                endpoints.MapControllerRoute(
                     name: "default",
-                    template: "{controller}/{action=Index}/{id?}");
+                    pattern: "{controller}/{action=Index}/{id?}");
             });
 
             app.UseSpa(spa =>

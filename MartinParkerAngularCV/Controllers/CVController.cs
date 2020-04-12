@@ -11,7 +11,7 @@ namespace MartinParkerAngularCV.Controllers
     [ApiController]
     public class CVController : ControllerBase
     {
-        [HttpGet()]
+        [HttpGet]
         public async Task<IActionResult> GetConfigurationValue(string secretName)
         {
             return Redirect("https://onedrive.live.com/redir?resid=CAF46874A058133D!678&authkey=!ACJumV_R8-dF43M&ithint=file%2cdocx;");
