@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "echo 'Starting' && ng serve",
     "build": "ng build --extract-css",
     "build:ssr": "npm run build -- --app=ssr --output-hashing=media",
     "test": "ng test",
@@ -28,6 +28,7 @@
     "bootstrap": "^4.4.1",
     "core-js": "^2.6.11",
     "jquery": "^3.5.0",
+    "node-sass": "^4.9.0",
     "popper.js": "^1.16.1",
     "rxjs": "^6.5.5",
     "tslib": "^1.10.0",

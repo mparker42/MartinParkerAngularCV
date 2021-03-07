@@ -35,26 +35,17 @@
     </mat-tab>
     <mat-tab>
       <ng-template mat-tab-label>
-        <mat-icon class="portfolioTitleIcon">filter_list</mat-icon>
-        &nbsp;
-        {{translations?.tabTitleFilter}}
-      </ng-template>
-      <h1>Some more tab content</h1>
-      <p>...</p>
-    </mat-tab>
-    <mat-tab>
-      <ng-template mat-tab-label>
         <mat-icon class="portfolioTitleIcon">search</mat-icon>
         &nbsp;
         {{translations?.tabTitleSearch}}
       </ng-template>
-      <h1>Some more tab content</h1>
-      <p>...</p>
+      <search #portfolioSearch (searchTermChanged)="filterTiles()"></search>
+      <filter #portfolioFilter (filterChanged)="filterTiles()"></filter>
     </mat-tab>
   </mat-tab-group>
 
   <div *ngIf="portfolio != null && translations != null" class="portfolioTiles">
-    <mat-card class="example-card mat-card {{tile.expanded ? 'expanded' : ''}}" *ngFor="let tile of portfolio.tiles">
+    <mat-card class="example-card mat-card {{tile.expanded ? 'expanded' : ''}}" *ngFor="let tile of filteredTiles">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title>{{translations[tile.titleTranslation]}}</mat-card-title>

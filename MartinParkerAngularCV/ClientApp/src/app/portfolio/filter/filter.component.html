@@ -1,0 +1,56 @@
+<h3 *ngIf="translations">
+  <mat-icon class="portfolioTitleIcon">filter_list</mat-icon>
+  &nbsp;
+  {{translations?.title}}
+</h3>
+<div *ngIf="translations">
+  <mat-form-field>
+    <mat-label>{{translations['filterSelectLabel']}}</mat-label>
+    <mat-select #newFilterPicker [(value)]="newFilter">
+      <mat-option *ngFor="let filterName of availableFilterNames" [value]="availableFilters[filterName]">
+        {{translations[availableFilters[filterName].titleTranslation]}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div *ngIf="selectedFilterType === 'boolean'">
+    <mat-radio-group [attr.aria-label]="translations['boolenFilterRadioLabel']" [(ngModel)]="booleanFilterSelection">
+      <mat-radio-button [value]="true">{{translations['boolenFilterRadioTrueLabel']}}</mat-radio-button>
+      <mat-radio-button [value]="false">{{translations['boolenFilterRadioFalseLabel']}}</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div *ngIf="selectedFilterType === 'select'">
+    <mat-form-field>
+      <mat-label>{{translations['selectFilterOnlyShow']}}</mat-label>
+      <mat-select #newFilterPicker [(value)]="selectFilterSelection">
+        <mat-option *ngFor="let filterOption of newFilter.options" [value]="filterOption">
+          {{translations[filterOption.translation]}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div *ngIf="selectedFilterType === 'date'">
+    DATE
+  </div>
+  <button mat-stroked-button *ngIf="selectedFilterType" (click)="newFilterPicked()">
+    {{translations['filterAdd']}}
+  </button>
+  <div class="chipContainer">
+    <mat-chip-list *ngIf="areAnyFilters()">
+      <mat-chip (click)="removeBooleanFilter(booleanFilter)" *ngFor="let booleanFilter of chosenFilters.booleanFilters">
+        <span [style.text-decoration]="booleanFilter.value ? 'none' : 'line-through'">
+          {{translations[booleanFilter.titleTranslation]}}
+        </span>
+        <mat-icon aria-hidden="false" [attr.aria-label]="translations['removeFilter']">cancel</mat-icon>
+      </mat-chip>
+      <mat-chip (click)="removeSelectFilter(selectFilter)" *ngFor="let selectFilter of chosenFilters.selectFilters">
+        {{translations[selectFilter.titleTranslation]}}: {{translations[selectFilter.value.translation]}}
+        <mat-icon aria-hidden="false" [attr.aria-label]="translations['removeFilter']">cancel</mat-icon>
+      </mat-chip>
+      <mat-chip (click)="removeDateFilter(dateFilter)" *ngFor="let dateFilter of chosenFilters.dateFilters">
+        {{translations[selectFilter.dateTranslation]}}
+        <mat-icon aria-hidden="false" [attr.aria-label]="translations['removeFilter']">cancel</mat-icon>
+      </mat-chip>
+    </mat-chip-list>
+  </div>
+</div>

@@ -43,7 +43,9 @@ namespace MartinParkerAngularCV.Controllers
             core,
             navigation,
             about,
-            portfolio
+            portfolio,
+            search,
+            filter
         }
 
         [HttpGet("{translationPackageName}")]

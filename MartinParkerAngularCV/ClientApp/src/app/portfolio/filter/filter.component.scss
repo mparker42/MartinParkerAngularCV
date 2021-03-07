@@ -1,0 +1,23 @@
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 1em;
+}
+button {
+    margin-top: 1em;
+}
+.chipContainer {
+    margin-bottom: 4px;
+    margin-right: 4px;
+
+    .mat-chip {
+        cursor: pointer;
+
+        .mat-icon {
+            font-size: 1.5em;
+            width: 1em;
+            height: 1.5em;
+            line-height: 1.53em;
+            margin-left: 0.5em;
+            text-decoration: none;
+        }
+    }
+}

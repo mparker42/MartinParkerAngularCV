@@ -30,6 +30,14 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { SearchComponent } from './portfolio/search/search.component';
+import { FilterComponent } from './portfolio/filter/filter.component';
 
 registerLocaleData(localeEnGB, 'en-GB')
 
@@ -39,7 +47,9 @@ registerLocaleData(localeEnGB, 'en-GB')
     HomeComponent,
     NavigationMenuComponent,
     AboutComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    SearchComponent,
+    FilterComponent
   ],
   imports: [
     CommonModule,
@@ -62,7 +72,13 @@ registerLocaleData(localeEnGB, 'en-GB')
     MatCardModule,
     MatGridListModule,
     MatCheckboxModule,
-    MatChipsModule
+    MatChipsModule,
+    MatInputModule,
+    MatTableModule,
+    MatSortModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatFormFieldModule
   ],
   providers: [
     APIRequestService,

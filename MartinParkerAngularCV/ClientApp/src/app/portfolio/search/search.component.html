@@ -1,0 +1,11 @@
+<p *ngIf="translations">
+  <mat-form-field>
+    <mat-label>{{translations['label']}}</mat-label>
+    <input
+      #portfolioSearch
+      matInput [(ngModel)]="searchTerm" />
+    <button mat-button *ngIf="searchTerm" matSuffix mat-icon-button aria-label="Clear" (click)="searchTerm=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</p>

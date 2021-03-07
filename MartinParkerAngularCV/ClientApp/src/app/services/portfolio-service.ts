@@ -41,6 +41,17 @@ export class PortfolioService {
     });
   }
 
+  getSearchFilters() {
+    return new Observable<ISearch>(observer => {
+      const searchObservable = this.blobService.get<ISearch>('DataFiles/V1/TileSearch.json');
+
+      searchObservable.then(result => {
+        observer.next(result);
+        observer.complete();
+      });
+    });
+  }
+
   constructor(private blobService: PublicBlobFilesService) {
   }
 }

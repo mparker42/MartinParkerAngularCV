@@ -1,3 +1,8 @@
+export interface IFilter {
+  name: string;
+  titleTranslation: string;
+}
+
 export interface ISelectFilterOption {
   value: string;
   translation: string;
@@ -8,6 +13,7 @@ export interface ISelectFilter {
   titleTranslation: string;
   options: ISelectFilterOption[];
   optionTranslations: any;
+  value: ISelectFilterOption;
 }
 
 export interface IDateFilter {
@@ -15,11 +21,13 @@ export interface IDateFilter {
   titleTranslation: string;
   minimumValue: Date;
   maximumValue: Date;
+  value: Date;
 }
 
 export interface IBooleanFilter {
   name: string;
   titleTranslation: string;
+  value: boolean;
 }
 
 export interface ISearch {
